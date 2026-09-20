@@ -47,7 +47,7 @@
     }
     fitPcScale();
     if (reload !== false && previewOpen && changed) {
-      iframe.src = "site/index.html?t=" + Date.now();
+      iframe.src = "/site/index.html?t=" + Date.now();
     }
   }
 
@@ -118,7 +118,7 @@
     uploadView.hidden = true;
     previewView.hidden = false;
     setDevice("pc", false);
-    iframe.src = "site/index.html?t=" + Date.now();
+    iframe.src = "/site/index.html?t=" + Date.now();
     requestAnimationFrame(fitPcScale);
   }
 
