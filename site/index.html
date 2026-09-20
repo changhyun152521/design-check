@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+<meta name="format-detection" content="telephone=no">
+<meta http-equiv="imagetoolbar" content="no">
+<title>이창현수학</title>
+<meta name="description" content="온라인 수업 및 학습관리">
+<meta name="application-name" content="이창현수학">
+<link rel="icon" href="img/common/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="img/common/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="img/common/apple-touch-icon.png" sizes="180x180">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="이창현수학">
+<meta property="og:title" content="이창현수학">
+<meta property="og:description" content="온라인 수업 및 학습관리">
+<meta property="og:image" content="img/common/og-share.png">
+<meta property="og:locale" content="ko_KR">
+<script src="js/jquery-1.8.3.min.js"></script>
+<script src="js/jquery-ui.js"></script>
+<script src="js/topmenu_script.js"></script>
+<script src="js/swiper.min.js"></script>
+<script src="js/aos.js"></script>
+<link rel="stylesheet" href="css/sh_common.css">
+<link rel="stylesheet" href="css/sh_main.css">
+<link rel="stylesheet" href="css/aos.css">
+<link rel="stylesheet" href="css/swiper.min.css">
+<style>
+@media (max-width:1024px){
+#main_banner{background:var(--mc-main-banner-bg, url(img/common/head_bg.png)) no-repeat center / cover !important}
+}
+</style>
+</head>
+<body>
+<div id="sh_wrapper" style="background-image:url(img/common/head_bg.png);background-repeat:no-repeat;background-position-x:center;--mc-main-banner-bg:url(img/common/head_bg.png);">
+    <div id="sh_hd">
+        <div id="sh_hd_wrapper">
+            <div id="hd_gnb">
+                <div class="hd_gnb_wrapper">
+                    <div class="menu_wrap">
+                        <div class="bookmark">
+                            <a href="#bookmark" id="bookmark" title="즐겨찾기 등록">
+                                <p><i class="fa fa-bookmark" aria-hidden="true"></i>즐겨찾기</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="top_nav_wrap">
+                <div class="top_menu_wrap">
+                    <div id="top_logo">
+                        <a href="#"><img src="img/common/logo_white.png" alt="이창현수학"></a>
+                    </div>
+                    <ul id="top_nav">
+                        <li class="list list01">
+                            <a href="#">내강의실</a>
+                            <ul class="sub_ul1">
+                                <li><a href="#">맛보기강좌</a></li>
+                                <li><a href="#">내강좌</a></li>
+                                <li><a href="#">개별질문영상</a></li>
+                            </ul>
+                        </li>
+                        <li class="list list02">
+                            <a href="#">내교실</a>
+                            <ul class="sub_ul2">
+                                <li><a href="#">수업 현황</a></li>
+                                <li><a href="#">테스트 현황</a></li>
+                                <li><a href="#">월별 통계</a></li>
+                                <li><a href="#">온라인 강의실</a></li>
+                            </ul>
+                        </li>
+                        <li class="list list03">
+                            <a href="#">학부모교실</a>
+                            <ul class="sub_ul3">
+                                <li><a href="#">수업 현황</a></li>
+                                <li><a href="#">테스트 현황</a></li>
+                                <li><a href="#">월별 통계</a></li>
+                            </ul>
+                        </li>
+                        <li class="list list04">
+                            <a href="#">커뮤니티</a>
+                            <ul class="sub_ul4">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">수강후기</a></li>
+                                <li><a href="#">이용문의</a></li>
+                            </ul>
+                        </li>
+                        <li class="list list05">
+                            <a href="#">SNS</a>
+                            <ul class="sub_ul5">
+                                <li><a href="https://www.youtube.com/@math_chang2" target="_blank" rel="noopener noreferrer">유튜브 바로가기</a></li>
+                                <li><a href="https://www.instagram.com/math_chang2?utm_source=ig_web_button_share_sheet&amp;stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">인스타 바로가기</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="hd_auth">
+                        <a href="#" class="hd_auth_link">로그인</a>
+                        <a href="#" class="hd_auth_cta">회원가입</a>
+                    </div>
+                </div>
+            </div>
+            <div id="topmenuM">
+                <h1 id="m_logo"><a href="#"><img src="img/common/logo_white.png" alt="이창현수학" /></a></h1>
+                <div class="m_user_links">
+                    <a href="#">로그인</a>
+                    <a href="#">회원가입</a>
+                </div>
+                <button type="button" id="m_navBtn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="navWrap">
+                    <span></span><span></span><span></span>
+                </button>
+                <div id="navWrap" aria-hidden="true">
+                    <div class="inner" role="dialog" aria-modal="true" aria-label="전체 메뉴">
+                        <div class="m_nav_head">
+                            <div class="m_nav_brand">
+                                <strong>이창현수학</strong>
+                                <span>학습관리 메뉴</span>
+                            </div>
+                        </div>
+                        <div class="m_nav_scroll">
+                            <div class="m_nav_auth">
+                                <a class="m_nav_auth_login" href="#">로그인</a>
+                                <a class="m_nav_auth_join" href="#">회원가입</a>
+                            </div>
+                            <ul class="m_lnb">
+                                <li>
+                                    <button class="m_bmenu" type="button" aria-expanded="false">내강의실</button>
+                                    <ul class="m_smenu">
+                                        <li><a href="#">맛보기강좌</a></li>
+                                        <li><a href="#">내강좌</a></li>
+                                        <li><a href="#">개별질문영상</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button class="m_bmenu" type="button" aria-expanded="false">내교실</button>
+                                    <ul class="m_smenu">
+                                        <li><a href="#">수업 현황</a></li>
+                                        <li><a href="#">테스트 현황</a></li>
+                                        <li><a href="#">월별 통계</a></li>
+                                        <li><a href="#">온라인 강의실</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button class="m_bmenu" type="button" aria-expanded="false">학부모교실</button>
+                                    <ul class="m_smenu">
+                                        <li><a href="#">수업 현황</a></li>
+                                        <li><a href="#">테스트 현황</a></li>
+                                        <li><a href="#">월별 통계</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button class="m_bmenu" type="button" aria-expanded="false">커뮤니티</button>
+                                    <ul class="m_smenu">
+                                        <li><a href="#">공지사항</a></li>
+                                        <li><a href="#">수강후기</a></li>
+                                        <li><a href="#">이용문의</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <button class="m_bmenu" type="button" aria-expanded="false">SNS</button>
+                                    <ul class="m_smenu">
+                                        <li><a href="https://www.youtube.com/@math_chang2" target="_blank" rel="noopener noreferrer">유튜브 바로가기</a></li>
+                                        <li><a href="https://www.instagram.com/math_chang2?utm_source=ig_web_button_share_sheet&amp;stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">인스타 바로가기</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="m_nav_foot">
+                            <p class="mo_hd_copy">ⓒ 이창현수학</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="sh_container">
+        <div id="main_banner">
+            <div id="main_banner_wrap">
+                <div class="main_txt_wrap">
+                    <p class="txt01" data-aos="fade-down" data-aos-delay="400" data-aos-duration="1200">중·고등 수학, 목표까지 함께하는</p>
+                    <p class="txt02" data-aos="fade-zoom-in" data-aos-delay="1000" data-aos-duration="1000"><span><span>이</span>창현</span>수학</p>
+                    <p class="txt03" data-aos="fade-zoom-in" data-aos-delay="1300" data-aos-duration="1000">맞춤 수업 · 온라인 강의 · 학습 통계 · 온라인강의실<br/>학생과 학부모가 함께 확인하는 체계적인 수학 학습 공간입니다.</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="index_wrapper">
+            <div class="include_01">
+                <div id="include01_wrapper">
+                    <ul class="box_banner_wrap mc_step_wrap">
+                        <li class="mc_step_item"
+                            style="--step-img:url('img/main/inc01/steps/step01.png');--step-pos:50% 22%;--step-zoom:1;--step-bright:1;--step-origin:50% 22%;"
+                            data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
+                            <div class="mc_step_card" role="button" tabindex="0"
+                                data-step-open="0" data-step-num="01" data-step-title="섬세한 개념수업"
+                                data-step-desc="기본 개념을 꼼꼼하고 세밀하게 설명하여 학생들이 수학의 원리를 정확히 이해할 수 있도록 합니다."
+                                data-step-img="img/main/inc01/steps/step01.png" data-step-pos="50% 22%" data-step-zoom="1" data-step-bright="1">
+                                <div class="more_btn" aria-hidden="true"><img src="img/main/inc01/more.png" alt=""></div>
+                                <span class="mc_step_media">
+                                    <img src="img/main/inc01/steps/step01.png" alt="" style="object-position:50% 22%;transform:scale(1);transform-origin:50% 22%;filter:brightness(1);-webkit-filter:brightness(1)">
+                                    <span class="mc_step_badge">STEP 01</span>
+                                </span>
+                                <span class="mc_step_body">
+                                    <span class="mc_step_tit">섬세한 개념수업</span>
+                                    <span class="mc_step_kicker">STEP01.</span>
+                                    <span class="mc_step_desc">기본 개념을 꼼꼼하고 세밀하게 설명하여 학생들이 수학의 원리를 정확히 이해할 수 있도록 합니다.</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="mc_step_item"
+                            style="--step-img:url('img/main/inc01/steps/step02.png');--step-pos:50% 22%;--step-zoom:1;--step-bright:1;--step-origin:50% 22%;"
+                            data-aos="fade-up" data-aos-delay="250" data-aos-duration="800">
+                            <div class="mc_step_card" role="button" tabindex="0"
+                                data-step-open="1" data-step-num="02" data-step-title="실전이론수업"
+                                data-step-desc="이론을 실제 문제에 적용하는 방법을 체계적으로 학습하여 실전 감각을 기를 수 있도록 합니다."
+                                data-step-img="img/main/inc01/steps/step02.png" data-step-pos="50% 22%" data-step-zoom="1" data-step-bright="1">
+                                <div class="more_btn" aria-hidden="true"><img src="img/main/inc01/more.png" alt=""></div>
+                                <span class="mc_step_media">
+                                    <img src="img/main/inc01/steps/step02.png" alt="" style="object-position:50% 22%;transform:scale(1);transform-origin:50% 22%;filter:brightness(1);-webkit-filter:brightness(1)">
+                                    <span class="mc_step_badge">STEP 02</span>
+                                </span>
+                                <span class="mc_step_body">
+                                    <span class="mc_step_tit">실전이론수업</span>
+                                    <span class="mc_step_kicker">STEP02.</span>
+                                    <span class="mc_step_desc">이론을 실제 문제에 적용하는 방법을 체계적으로 학습하여 실전 감각을 기를 수 있도록 합니다.</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="mc_step_item"
+                            style="--step-img:url('img/main/inc01/steps/step03.png');--step-pos:50% 22%;--step-zoom:1;--step-bright:1;--step-origin:50% 22%;"
+                            data-aos="fade-up" data-aos-delay="350" data-aos-duration="800">
+                            <div class="mc_step_card" role="button" tabindex="0"
+                                data-step-open="2" data-step-num="03" data-step-title="실전감각 고난도 N제"
+                                data-step-desc="고난도 문제를 통해 실전 감각을 키우고, 다양한 유형의 문제를 풀어보며 실력을 향상시킵니다."
+                                data-step-img="img/main/inc01/steps/step03.png" data-step-pos="50% 22%" data-step-zoom="1" data-step-bright="1">
+                                <div class="more_btn" aria-hidden="true"><img src="img/main/inc01/more.png" alt=""></div>
+                                <span class="mc_step_media">
+                                    <img src="img/main/inc01/steps/step03.png" alt="" style="object-position:50% 22%;transform:scale(1);transform-origin:50% 22%;filter:brightness(1);-webkit-filter:brightness(1)">
+                                    <span class="mc_step_badge">STEP 03</span>
+                                </span>
+                                <span class="mc_step_body">
+                                    <span class="mc_step_tit">실전감각 고난도 N제</span>
+                                    <span class="mc_step_kicker">STEP03.</span>
+                                    <span class="mc_step_desc">고난도 문제를 통해 실전 감각을 키우고, 다양한 유형의 문제를 풀어보며 실력을 향상시킵니다.</span>
+                                </span>
+                            </div>
+                        </li>
+                        <li class="mc_step_item"
+                            style="--step-img:url('img/main/inc01/steps/step04.png');--step-pos:50% 22%;--step-zoom:1;--step-bright:1;--step-origin:50% 22%;"
+                            data-aos="fade-up" data-aos-delay="450" data-aos-duration="800">
+                            <div class="mc_step_card" role="button" tabindex="0"
+                                data-step-open="3" data-step-num="04" data-step-title="직전 FINAL"
+                                data-step-desc="시험 직전 최종 정리와 실전 대비를 통해 완벽한 준비를 마무리합니다."
+                                data-step-img="img/main/inc01/steps/step04.png" data-step-pos="50% 22%" data-step-zoom="1" data-step-bright="1">
+                                <div class="more_btn" aria-hidden="true"><img src="img/main/inc01/more.png" alt=""></div>
+                                <span class="mc_step_media">
+                                    <img src="img/main/inc01/steps/step04.png" alt="" style="object-position:50% 22%;transform:scale(1);transform-origin:50% 22%;filter:brightness(1);-webkit-filter:brightness(1)">
+                                    <span class="mc_step_badge">STEP 04</span>
+                                </span>
+                                <span class="mc_step_body">
+                                    <span class="mc_step_tit">직전 FINAL</span>
+                                    <span class="mc_step_kicker">STEP04.</span>
+                                    <span class="mc_step_desc">시험 직전 최종 정리와 실전 대비를 통해 완벽한 준비를 마무리합니다.</span>
+                                </span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="swiper-container" data-aos="fade-up" data-aos-delay="200" data-aos-duration="900">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide bg01">
+                                <a class="mc_slide_hit" href="#" aria-label="중간 배너 1"></a>
+                            </li>
+                            <li class="swiper-slide bg02">
+                                <a class="mc_slide_hit" href="#" aria-label="중간 배너 2"></a>
+                            </li>
+                        </ul>
+                        <div class="pager"></div>
+                    </div>
+                    <div class="cons_wrap">
+                        <div class="mc_side_panel is-guest">
+                            <div class="mc_side_auth" data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                                <div class="mc_side_login">
+                                    <p class="e_tit">MEMBER LOGIN</p>
+                                    <a class="mc_side_login_btn" href="#">로그인하기<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+                                    <p class="mc_side_login_sub">아직 회원이 아니신가요? <a href="#">회원가입</a></p>
+                                </div>
+                            </div>
+                            <div class="mc_side_quick_block" data-aos="fade-up" data-aos-delay="320" data-aos-duration="700">
+                                <ul class="mc_side_quick">
+                                    <li>
+                                        <a href="#" title="맛보기강좌 바로가기">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-play-circle"></i></span>
+                                            <span class="mc_side_q_tit">맛보기강좌</span>
+                                            <span class="mc_side_q_desc">맛보기강좌 바로가기</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="내 수강 강좌">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-book"></i></span>
+                                            <span class="mc_side_q_tit">내강좌</span>
+                                            <span class="mc_side_q_desc">내 수강 강좌</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="개별질문영상">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-video-camera"></i></span>
+                                            <span class="mc_side_q_tit">개별질문</span>
+                                            <span class="mc_side_q_desc">개별질문영상</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="내교실 수업 현황">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-calendar"></i></span>
+                                            <span class="mc_side_q_tit">수업 현황</span>
+                                            <span class="mc_side_q_desc">내교실 수업 현황</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="테스트 현황">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-pencil-square-o"></i></span>
+                                            <span class="mc_side_q_tit">테스트</span>
+                                            <span class="mc_side_q_desc">테스트 현황</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="월별 학습 통계">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-bar-chart"></i></span>
+                                            <span class="mc_side_q_tit">월별 통계</span>
+                                            <span class="mc_side_q_desc">월별 학습 통계</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="온라인 강의실">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-desktop"></i></span>
+                                            <span class="mc_side_q_tit">온라인강의</span>
+                                            <span class="mc_side_q_desc">온라인 강의실</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="학부모교실 바로가기">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-users"></i></span>
+                                            <span class="mc_side_q_tit">학부모교실</span>
+                                            <span class="mc_side_q_desc">학부모교실 바로가기</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" title="이용문의 FAQ">
+                                            <span class="mc_side_q_icon" aria-hidden="true"><i class="fa fa-question-circle"></i></span>
+                                            <span class="mc_side_q_tit">이용문의</span>
+                                            <span class="mc_side_q_desc">이용문의 FAQ</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mc_step_modal" id="mc_step_modal" hidden aria-hidden="true">
+                        <div class="mc_step_modal_backdrop" data-step-close></div>
+                        <div class="mc_step_modal_dialog" role="dialog" aria-modal="true" aria-labelledby="mc_step_modal_title">
+                            <button type="button" class="mc_step_modal_close" data-step-close aria-label="닫기">&times;</button>
+                            <div class="mc_step_modal_media">
+                                <img id="mc_step_modal_img" src="" alt="">
+                                <span class="mc_step_badge" id="mc_step_modal_badge">STEP 01</span>
+                            </div>
+                            <div class="mc_step_modal_body">
+                                <h3 id="mc_step_modal_title"></h3>
+                                <p id="mc_step_modal_desc"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="latest_wrap">
+                        <div class="latest_box inq_wrap" data-aos="fade-up" data-aos-delay="100" data-aos-duration="800">
+                            <p class="latest_box_tit">공지사항<a href="#" class="more_btn">더보기 <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+                            <div class="latest">
+                                <div class="sh_lt_req">
+                                    <ul>
+                                        <li>
+                                            <div>
+                                                <span class="req_d">[공지사항]</span>
+                                                <span class="sh_notice_req"><a href="#">이창현수학 홈페이지가 오픈되었습니다.</a></span>
+                                            </div>
+                                            <span class="sh_date">2026-03-16</span>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                <span class="req_d">[공지사항]</span>
+                                                <span class="sh_notice_req"><a href="#">맛보기강좌 및 수강 상담을 받고 있습니다.</a></span>
+                                            </div>
+                                            <span class="sh_date">2026-03-16</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="latest_box qna_wrap" data-aos="fade-up" data-aos-delay="220" data-aos-duration="800">
+                            <p class="latest_box_tit">이용문의<a href="#" class="more_btn">더보기 <i class="fa fa-arrow-right" aria-hidden="true"></i></a></p>
+                            <div class="latest">
+                                <div class="sh_lt_notice">
+                                    <ul id="mc_main_faq_list">
+                                        <li>
+                                            <div class="sh_notice_box">
+                                                <span class="tit_q">Q</span>
+                                                <button type="button" class="mc_main_faq_btn" data-faq-id="1">맛보기강좌는 어떻게 수강하나요?</button>
+                                            </div>
+                                            <button type="button" class="mc_main_faq_go" data-faq-id="1" aria-label="FAQ 보기">
+                                                <span class="go_btn"><img src="img/main/latest/more_btn.png" alt=""></span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <div class="sh_notice_box">
+                                                <span class="tit_q">Q</span>
+                                                <button type="button" class="mc_main_faq_btn" data-faq-id="2">중학교·고등학교 수학 모두 수업 가능한가요?</button>
+                                            </div>
+                                            <button type="button" class="mc_main_faq_go" data-faq-id="2" aria-label="FAQ 보기">
+                                                <span class="go_btn"><img src="img/main/latest/more_btn.png" alt=""></span>
+                                            </button>
+                                        </li>
+                                        <li>
+                                            <div class="sh_notice_box">
+                                                <span class="tit_q">Q</span>
+                                                <button type="button" class="mc_main_faq_btn" data-faq-id="3">학부모도 자녀 학습 현황을 볼 수 있나요?</button>
+                                            </div>
+                                            <button type="button" class="mc_main_faq_go" data-faq-id="3" aria-label="FAQ 보기">
+                                                <span class="go_btn"><img src="img/main/latest/more_btn.png" alt=""></span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="include_02">
+                <div id="include02_wrapper">
+                    <div class="scroll_wrap" data-aos="fade-down" data-aos-delay="50" data-aos-duration="600">
+                        <div class="scroll-down"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+                    </div>
+                    <div class="cont_wrap" data-aos="fade-down" data-aos-delay="100" data-aos-duration="900">
+                        <h3 class="tit_wrap">학생·학부모가 함께 쓰는 <span>이창현수학 학습 시스템</span></h3>
+                    </div>
+                    <div class="section_wrap">
+                        <div class="sect01" data-aos="fade-up" data-aos-delay="150" data-aos-duration="800">
+                            <div class="icon"></div>
+                            <h4>내강의실</h4>
+                            <p>맛보기강좌 · 내강좌 · 개별질문영상
+온라인으로 이어지는 수업과 복습</p>
+                        </div>
+                        <div class="sect02" data-aos="fade-up" data-aos-delay="280" data-aos-duration="800">
+                            <div class="icon"></div>
+                            <h4>내교실</h4>
+                            <p>수업 현황 · 테스트 현황 · 월별 통계 · 온라인 강의실
+스스로 성장 과정을 확인합니다</p>
+                        </div>
+                        <div class="sect03" data-aos="fade-up" data-aos-delay="410" data-aos-duration="800">
+                            <div class="icon"></div>
+                            <h4>학부모교실</h4>
+                            <p>수업 현황 · 테스트 현황 · 월별 통계
+학부모와 함께하는 학습 관리</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="include_03">
+                <div id="include03_wrapper">
+                    <div class="section01">
+                        <div class="tit_wrap" data-aos="fade-up" data-aos-delay="50" data-aos-duration="700">
+                            <p class="latest_box_tit">맛보기강좌</p>
+                            <a href="#" class="more_btn">더보기<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="box01">
+                            <div class="video" data-preview-slot="0" data-aos="fade-up" data-aos-delay="120" data-aos-duration="800"></div>
+                            <div class="video" data-preview-slot="1" data-aos="fade-up" data-aos-delay="220" data-aos-duration="800"></div>
+                        </div>
+                        <div class="box02">
+                            <ul>
+                                <li data-aos="fade-up" data-aos-delay="200" data-aos-duration="700">
+                                    <a class="mc_sns_card" href="https://www.youtube.com/@math_chang2" target="_blank" rel="noopener noreferrer">
+                                        <span class="mc_sns_icon" aria-hidden="true"><img src="img/main/inc03/icon_youtube.svg" alt=""></span>
+                                        <span class="mc_sns_body">
+                                            <span class="mc_sns_tit">유튜브</span>
+                                            <span class="mc_sns_meta">YOUTUBE_리창매쓰</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="280" data-aos-duration="700">
+                                    <a class="mc_sns_card" href="https://www.instagram.com/math_chang2?utm_source=ig_web_button_share_sheet&amp;stkn=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer">
+                                        <span class="mc_sns_icon" aria-hidden="true"><img src="img/main/inc03/icon_instagram.svg" alt=""></span>
+                                        <span class="mc_sns_body">
+                                            <span class="mc_sns_tit">인스타그램</span>
+                                            <span class="mc_sns_meta">math_chang2</span>
+                                        </span>
+                                    </a>
+                                </li>
+                                <li data-aos="fade-up" data-aos-delay="360" data-aos-duration="700">
+                                    <a class="mc_sns_card is-tel" href="tel:010-9903-7949">
+                                        <span class="mc_sns_icon" aria-hidden="true"><img src="img/main/inc03/icon_phone.svg" alt=""></span>
+                                        <span class="mc_sns_body">
+                                            <span class="mc_sns_tit">이창현수학</span>
+                                            <span class="mc_sns_meta">010-9903-7949</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="section02" data-aos="fade-left" data-aos-delay="150" data-aos-duration="900">
+                        <div class="tit_wrap">
+                            <p class="latest_box_tit">수강 후기</p>
+                            <a href="#" class="more_btn">더보기<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="swiper-container mc_review_slide">
+                            <ul class="swiper-wrapper">
+                                <li class="swiper-slide">
+                                    <article class="mc_rv_card">
+                                        <div class="mc_rv_card_inner">
+                                            <header class="mc_rv_head">
+                                                <span class="mc_rv_label">수강후기</span>
+                                                <p class="mc_rv_author">OO대 OO학과 김OO</p>
+                                                <p class="mc_rv_title">내신 성적이 한 학기 만에 올랐습니다</p>
+                                            </header>
+                                            <div class="mc_rv_body">
+                                                <p class="mc_rv_body_txt">개념부터 차근차근 잡아 주셔서 막혀 있던 부분이 풀렸고, 한 학기 만에 내신 성적이 눈에 띄게 올랐습니다.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="swiper-slide">
+                                    <article class="mc_rv_card">
+                                        <div class="mc_rv_card_inner">
+                                            <header class="mc_rv_head">
+                                                <span class="mc_rv_label">수강후기</span>
+                                                <p class="mc_rv_author">OO대 OO학과 이OO</p>
+                                                <p class="mc_rv_title">수능 수학 등급 목표를 달성했어요</p>
+                                            </header>
+                                            <div class="mc_rv_body">
+                                                <p class="mc_rv_body_txt">실전 감각을 키우는 수업과 온라인강의실 복습 덕분에 목표했던 수능 수학 등급을 달성할 수 있었습니다.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="swiper-slide">
+                                    <article class="mc_rv_card">
+                                        <div class="mc_rv_card_inner">
+                                            <header class="mc_rv_head">
+                                                <span class="mc_rv_label">수강후기</span>
+                                                <p class="mc_rv_author">OO고 OO학년 박OO</p>
+                                                <p class="mc_rv_title">개인질문으로 막힌 문제를 풀었습니다</p>
+                                            </header>
+                                            <div class="mc_rv_body">
+                                                <p class="mc_rv_body_txt">수업 후에도 개별질문영상으로 막힌 문제를 바로 물어볼 수 있어서 막힘 없이 진도를 따라갈 수 있었습니다.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                                <li class="swiper-slide">
+                                    <article class="mc_rv_card">
+                                        <div class="mc_rv_card_inner">
+                                            <header class="mc_rv_head">
+                                                <span class="mc_rv_label">수강후기</span>
+                                                <p class="mc_rv_author">OO대 OO학과 최OO</p>
+                                                <p class="mc_rv_title">온라인강의실로 복습 습관을 들였어요</p>
+                                            </header>
+                                            <div class="mc_rv_body">
+                                                <p class="mc_rv_body_txt">학부모교실에서 학습 현황을 함께 확인하고, 온라인강의실로 복습 습관을 잡을 수 있었습니다.</p>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </li>
+                            </ul>
+                            <div class="mc_rv_controls">
+                                <div class="mc_rv_arrows">
+                                    <button type="button" class="mc_rv_nav mc_rv_prev" aria-label="이전 후기"><i class="fa fa-angle-left" aria-hidden="true"></i></button>
+                                    <button type="button" class="mc_rv_nav mc_rv_next" aria-label="다음 후기"><i class="fa fa-angle-right" aria-hidden="true"></i></button>
+                                </div>
+                                <div class="pager"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mc_main_faq_modal" id="mc_main_faq_modal" hidden>
+        <div class="mc_main_faq_dim" data-faq-close></div>
+        <div class="mc_main_faq_panel" role="dialog" aria-modal="true" aria-labelledby="mc_main_faq_title">
+            <div class="mc_main_faq_head">
+                <p class="mc_main_faq_eyebrow">Q&amp;A</p>
+                <h2 id="mc_main_faq_title">FAQ</h2>
+                <button type="button" class="mc_main_faq_close" data-faq-close aria-label="닫기"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+            <div class="mc_main_faq_body" id="mc_main_faq_body"></div>
+            <div class="mc_main_faq_foot">
+                <a href="#" class="mc_main_faq_link">이용문의 더보기</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="sh_ft_btns">
+        <div class="btns">
+            <a class="tel" href="tel:010-9903-7949"><i class="fa fa-phone"></i>010-9903-7949</a>
+        </div>
+    </div>
+    <a id="fix_tel" href="tel:010-9903-7949" class=""><i class="fa fa-phone"></i></a>
+    <div id="sh_ft">
+        <div id="sh_ft_wrapper">
+            <p class="ft_logo"><img src="img/common/logo_white.png" alt="이창현수학"></p>
+            <p class="ft_copy">Copyright ⓒ <strong>이창현수학</strong> All rights reserved.</p>
+            <p class="ft_tel"><a href="tel:010-9903-7949">010-9903-7949</a></p>
+        </div>
+    </div>
+</div>
+
+<script>
+var mcPreviewYoutubeList = [
+    {
+        title: "이창현수학 유튜브 채널",
+        url: "https://www.youtube.com/@math_chang2",
+        thumb: "img/main/inc03/video.png"
+    }
+];
+var mcThemeUrl = ".";
+</script>
+<script src="js/index.main.js"></script>
+<script>
+(function () {
+    var faqs = [
+        { faq_id: 1, title: "맛보기강좌는 어떻게 수강하나요?", content: "맛보기강좌는 어떻게 수강하나요?", answer: "홈페이지 상단의 내강의실 > 맛보기강좌 메뉴에서 강의 스타일과 수업 분위기를 미리 확인할 수 있습니다." },
+        { faq_id: 2, title: "중학교·고등학교 수학 모두 수업 가능한가요?", content: "중학교·고등학교 수학 모두 수업 가능한가요?", answer: "중등 수학(선행·내신)부터 고등 수학, 수능 실전까지 모두 수업합니다. 학생 목표에 맞춰 커리큘럼을 구성합니다." },
+        { faq_id: 3, title: "학부모도 자녀 학습 현황을 볼 수 있나요?", content: "학부모도 자녀 학습 현황을 볼 수 있나요?", answer: "학부모교실에서 자녀의 수업 현황, 테스트 현황, 월별 통계를 함께 확인할 수 있습니다." }
+    ];
+    var map = {};
+    faqs.forEach(function (f) { map[f.faq_id] = f; });
+    var modal = document.getElementById("mc_main_faq_modal");
+    var titleEl = document.getElementById("mc_main_faq_title");
+    var bodyEl = document.getElementById("mc_main_faq_body");
+    if (!modal || !bodyEl) return;
+    document.body.appendChild(modal);
+
+    function esc(s) {
+        return String(s == null ? "" : s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+    }
+    function nl2br(s) {
+        return esc(s).replace(/\n/g, "<br>");
+    }
+    function openFaq(id) {
+        var faq = map[id];
+        if (!faq) return;
+        titleEl.textContent = faq.title || "FAQ";
+        bodyEl.innerHTML =
+            '<div class="mc_main_faq_block is-q"><span class="mc_main_faq_label">질문</span><div class="mc_main_faq_text">' + nl2br(faq.content || "") + "</div></div>" +
+            '<div class="mc_main_faq_block is-a"><span class="mc_main_faq_label">답변</span><div class="mc_main_faq_text">' + nl2br(faq.answer || "") + "</div></div>";
+        modal.hidden = false;
+        document.body.classList.add("mc-main-faq-open");
+    }
+    function closeFaq() {
+        modal.hidden = true;
+        document.body.classList.remove("mc-main-faq-open");
+    }
+    document.querySelectorAll("[data-faq-id]").forEach(function (el) {
+        el.addEventListener("click", function () {
+            openFaq(parseInt(el.getAttribute("data-faq-id"), 10));
+        });
+    });
+    modal.querySelectorAll("[data-faq-close]").forEach(function (el) {
+        el.addEventListener("click", closeFaq);
+    });
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && !modal.hidden) closeFaq();
+    });
+})();
+</script>
+<script>
+$(function() {
+    $(window).on("scroll", function() {
+        if ($(window).scrollTop() > 100) {
+            $("#fix_tel").addClass("active");
+        } else {
+            $("#fix_tel").removeClass("active");
+        }
+    });
+    if (typeof AOS !== "undefined") {
+        AOS.init({
+            once: true,
+            offset: 80,
+            easing: "ease-out-cubic",
+            duration: 800
+        });
+    }
+});
+</script>
+<script src="js/banner-apply.js"></script>
+</body>
+</html>

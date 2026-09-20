@@ -1,0 +1,63 @@
+@charset "utf-8";
+
+/* 내강의실 권한 안내 */
+.mc_gate_box{
+    max-width:520px;
+    margin:24px auto 0;
+    padding:40px 28px;
+    border:1px solid #e8e8e8;
+    background:#fafafa;
+    text-align:center;
+    font-family:'Noto Sans KR',sans-serif;
+}
+.mc_gate_box .mc_gate_eyebrow{
+    margin:0 0 10px;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:2px;
+    color:#fe7013;
+}
+.mc_gate_box h4{
+    margin:0 0 12px;
+    font-size:22px;
+    font-weight:700;
+    letter-spacing:-0.5px;
+    color:#222;
+}
+.mc_gate_box .mc_gate_desc{
+    margin:0 0 22px;
+    font-size:15px;
+    line-height:1.7;
+    color:#777;
+    word-break:keep-all;
+}
+.mc_gate_box .mc_gate_actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+}
+.mc_gate_box .mc_gate_btn{
+    display:inline-block;
+    min-width:108px;
+    padding:10px 16px;
+    border:1px solid #ddd;
+    background:#fff;
+    color:#444;
+    font-size:14px;
+    font-weight:500;
+    text-decoration:none;
+    text-align:center;
+}
+.mc_gate_box .mc_gate_btn.is-primary{
+    border-color:#fe7013;
+    background:#fe7013;
+    color:#fff;
+}
+.mc_gate_box .mc_gate_btn:hover{opacity:.92}
+
+@media (max-width:640px){
+.mc_gate_box{margin:12px 0 0;padding:32px 18px}
+.mc_gate_box h4{font-size:20px}
+.mc_gate_box .mc_gate_desc{font-size:14px}
+}

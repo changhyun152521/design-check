@@ -1,0 +1,776 @@
+@charset "utf-8";
+
+/* 수업 현황 — 상단 헤드는 sh_preview.css 의 mc_pv_head 공유 */
+/* #sh_content 상·하단 여백은 .mc-preview-wrap(sh_preview.css)과 동일하게 맞춤 */
+
+#mc_preview_page.mc_progress_page{
+    max-width:720px;
+    margin:0 auto;
+}
+
+/* 반 선택 모달 */
+#mc_pg_class_modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100100;
+    align-items:center;
+    justify-content:center;
+    padding:24px 16px;
+    background:rgba(17,17,17,.55);
+}
+#mc_pg_class_modal.is-open{display:flex}
+#mc_pg_class_modal .mc_pg_cm_panel{
+    width:min(400px,100%);
+    padding:28px 24px 20px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    box-shadow:0 18px 48px rgba(0,0,0,.18);
+    font-family:'Noto Sans KR',sans-serif;
+}
+#mc_pg_class_modal .mc_pg_cm_eyebrow{
+    margin:0 0 10px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:1.5px;
+    color:#fe7013;
+}
+#mc_pg_class_modal .mc_pg_cm_title{
+    margin:0 0 10px;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:-0.4px;
+    color:#222;
+    line-height:1.35;
+}
+#mc_pg_class_modal .mc_pg_cm_desc{
+    margin:0 0 20px;
+    font-size:14px;
+    line-height:1.65;
+    color:#777;
+    word-break:keep-all;
+}
+#mc_pg_class_modal .mc_pg_cm_list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+#mc_pg_class_modal .mc_pg_cm_item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    padding:14px 16px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    color:#222;
+    text-decoration:none;
+    transition:border-color .15s,background .15s;
+}
+#mc_pg_class_modal .mc_pg_cm_item:hover{
+    border-color:#fe7013;
+    background:#fffaf6;
+}
+#mc_pg_class_modal .mc_pg_cm_name{
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:-0.2px;
+}
+#mc_pg_class_modal .mc_pg_cm_go{
+    font-size:18px;
+    color:#bbb;
+    line-height:1;
+}
+#mc_pg_class_modal .mc_pg_cm_item:hover .mc_pg_cm_go{color:#fe7013}
+
+@media (max-width:480px){
+#mc_pg_class_modal{padding:16px 12px;align-items:center;justify-content:center}
+#mc_pg_class_modal .mc_pg_cm_panel{
+    width:100%;
+    max-width:400px;
+    padding:24px 18px 18px;
+    border-radius:8px;
+}
+#mc_pg_class_modal .mc_pg_cm_item{min-height:52px;padding:16px}
+}
+
+/* 반·수업일 통합 툴바 — 동일 폭·동일 높이 박스 */
+#mc_preview_page.mc_progress_page .mc_pg_toolbar{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:0 0 28px;
+    align-items:stretch;
+}
+#mc_preview_page.mc_progress_page .mc_pg_toolbar.date-only{
+    grid-template-columns:1fr;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field{
+    display:flex;
+    flex-direction:column;
+    margin:0;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_class{
+    width:100%;
+    max-width:100%;
+}
+#mc_preview_page.mc_progress_page .mc_pg_sr_only{
+    position:absolute;
+    width:1px;
+    height:1px;
+    padding:0;
+    margin:-1px;
+    overflow:hidden;
+    clip:rect(0,0,0,0);
+    white-space:nowrap;
+    border:0;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_control{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    width:100%;
+    height:46px;
+    min-height:46px;
+    max-height:46px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    box-sizing:border-box;
+    transition:border-color .15s, box-shadow .15s;
+}
+/* 반 셀렉트만 높이 넘침 차단 — 날짜/반 메뉴는 드롭다운이 잘리지 않게 */
+#mc_preview_page.mc_progress_page .mc_pg_field_class .mc_pg_field_control{
+    overflow:visible;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_control:focus-within{
+    border-color:#fe7013;
+    box-shadow:0 0 0 3px rgba(254,112,19,.1);
+}
+/* 날짜/반 바는 열림 상태에서만 강조 */
+#mc_preview_page.mc_progress_page .mc_pg_datebar:focus-within,
+#mc_preview_page.mc_progress_page .mc_pg_classbar:focus-within{
+    border-color:#e8e8e8;
+    box-shadow:none;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebar.is-cal-open,
+#mc_preview_page.mc_progress_page .mc_pg_datebar:has(.mc_pg_datebtn[aria-expanded="true"]),
+#mc_preview_page.mc_progress_page .mc_pg_classbar.is-open,
+#mc_preview_page.mc_progress_page .mc_pg_classbar:has(.mc_pg_classbtn[aria-expanded="true"]){
+    border-color:#fe7013;
+    box-shadow:0 0 0 3px rgba(254,112,19,.1);
+}
+
+/* 반 선택 — 커스텀 드롭다운 (박스 너비와 동일) */
+#mc_preview_page.mc_progress_page .mc_pg_field_class .mc_pg_classbar{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    width:100%;
+    max-width:100%;
+    padding:0;
+    overflow:visible;
+    z-index:6;
+    background:#fff;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    width:100%;
+    height:100%;
+    margin:0;
+    padding:0 14px;
+    border:0;
+    background:transparent;
+    font:inherit;
+    font-size:14px;
+    font-weight:600;
+    color:#222;
+    letter-spacing:-0.25px;
+    cursor:pointer;
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+    transition:color .15s,background .15s;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn:disabled{
+    cursor:default;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn[aria-expanded="true"]{
+    color:#fe7013;
+    background:#fffaf6;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classname{
+    min-width:0;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    text-align:left;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classchev{
+    flex:0 0 auto;
+    width:10px;
+    height:6px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23aaa' d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat center;
+    transition:transform .15s;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn[aria-expanded="true"] .mc_pg_classchev{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fe7013' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    transform:rotate(180deg);
+}
+@media (hover:hover) and (pointer:fine){
+#mc_preview_page.mc_progress_page .mc_pg_classbtn:not(:disabled):hover{
+    color:#fe7013;
+    background:#fffaf6;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn:not(:disabled):hover .mc_pg_classchev{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fe7013' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+}
+}
+#mc_preview_page.mc_progress_page .mc_pg_class_menu{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    right:0;
+    width:100%;
+    margin:0;
+    padding:6px;
+    list-style:none;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    box-shadow:0 10px 28px rgba(0,0,0,.08);
+    box-sizing:border-box;
+    z-index:30;
+}
+#mc_preview_page.mc_progress_page .mc_pg_class_menu[hidden]{display:none !important}
+#mc_preview_page.mc_progress_page .mc_pg_class_item{
+    display:block;
+    padding:12px 12px;
+    border:0;
+    background:transparent;
+    color:#222;
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:-0.25px;
+    text-decoration:none;
+    line-height:1.35;
+    word-break:keep-all;
+    transition:background .15s,color .15s;
+}
+#mc_preview_page.mc_progress_page .mc_pg_class_item:hover,
+#mc_preview_page.mc_progress_page .mc_pg_class_item.is-current{
+    color:#fe7013;
+    background:#fffaf6;
+}
+
+/* 수업일 박스 */
+#mc_preview_page.mc_progress_page .mc_pg_field_date .mc_pg_datebar{
+    position:relative;
+    display:flex;
+    align-items:stretch;
+    width:100%;
+    height:100%;
+    gap:0;
+    margin:0;
+    padding:0;
+    border:0;
+    overflow:visible;
+    z-index:5;
+    background:#faf7f4;
+}
+#mc_preview_page.mc_progress_page .mc_pg_nav{
+    display:inline-flex;
+    flex:0 0 40px;
+    width:40px;
+    align-items:center;
+    justify-content:center;
+    border:0;
+    background:transparent;
+    color:#888;
+    font-size:18px;
+    line-height:1;
+    text-decoration:none;
+    transition:color .15s,background .15s;
+    -webkit-tap-highlight-color:transparent;
+}
+#mc_preview_page.mc_progress_page .mc_pg_nav.is-disabled{
+    opacity:.28;
+    pointer-events:none;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datecell{
+    position:relative;
+    flex:1 1 auto;
+    min-width:0;
+    display:flex;
+    align-items:stretch;
+    background:transparent;
+    overflow:visible;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn{
+    display:inline-flex;
+    flex:1 1 auto;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    min-width:0;
+    width:100%;
+    height:100%;
+    padding:0 8px;
+    border:0;
+    background:transparent;
+    font:inherit;
+    color:#222;
+    cursor:pointer;
+    transition:color .15s,background .15s;
+    -webkit-tap-highlight-color:transparent;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn[aria-expanded="true"]{
+    color:#fe7013;
+    background:#fff1e6;
+}
+@media (hover:hover) and (pointer:fine){
+#mc_preview_page.mc_progress_page .mc_pg_datebtn:hover{
+    color:#fe7013;
+    background:#fff1e6;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn:hover .mc_pg_dateyear{
+    color:#fe7013;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn:hover .mc_pg_datechev{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fe7013' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+}
+#mc_preview_page.mc_progress_page .mc_pg_nav:hover{color:#fe7013;background:#fff1e6}
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn_text{
+    display:inline-flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:6px;
+    min-width:0;
+    max-width:100%;
+}
+#mc_preview_page.mc_progress_page .mc_pg_dateyear{
+    flex:0 0 auto;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.15px;
+    color:#aaa;
+    line-height:1.2;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn[aria-expanded="true"] .mc_pg_dateyear{
+    color:#fe7013;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datelabel{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    line-height:1.2;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datechev{
+    flex:0 0 auto;
+    width:10px;
+    height:6px;
+    margin-top:1px;
+    background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23aaa' d='M1 1l4 4 4-4'/%3E%3C/svg%3E") no-repeat center;
+    transition:transform .15s;
+}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn[aria-expanded="true"] .mc_pg_datechev{
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%23fe7013' d='M1 1l4 4 4-4'/%3E%3C/svg%3E");
+    transform:rotate(180deg);
+}
+
+/* 캘린더 — 날짜 셀 너비에만 맞춤 */
+#mc_preview_page.mc_progress_page .mc_pg_calendar{
+    position:absolute;
+    top:calc(100% + 6px);
+    left:0;
+    right:0;
+    width:100%;
+    min-width:0;
+    transform:none;
+    padding:12px 10px 10px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    box-shadow:0 10px 28px rgba(0,0,0,.08);
+    box-sizing:border-box;
+    z-index:20;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin:0 0 10px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_title{
+    font-size:14px;
+    font-weight:700;
+    color:#222;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_nav{
+    width:30px;
+    height:30px;
+    border:1px solid #e5e5e5;
+    background:#fff;
+    color:#555;
+    font-size:16px;
+    line-height:1;
+    cursor:pointer;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_nav:hover{border-color:#fe7013;color:#fe7013}
+#mc_preview_page.mc_progress_page .mc_pg_cal_weeks,
+#mc_preview_page.mc_progress_page .mc_pg_cal_grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:2px;
+    text-align:center;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_weeks{
+    margin:0 0 4px;
+    font-size:11px;
+    font-weight:500;
+    color:#999;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_weeks .is-sun{color:#c45c5c}
+#mc_preview_page.mc_progress_page .mc_pg_cal_cell{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height:32px;
+    font-size:13px;
+    font-weight:500;
+    color:#ccc;
+    text-decoration:none;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_cell.is-on{
+    color:#222;
+    background:#f7f7f7;
+    cursor:pointer;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_cell.is-on:hover{background:#fff4eb;color:#fe7013}
+#mc_preview_page.mc_progress_page .mc_pg_cal_cell.is-selected{
+    background:#fe7013 !important;
+    color:#fff !important;
+}
+#mc_preview_page.mc_progress_page .mc_pg_cal_cell.is-empty{visibility:hidden}
+#mc_preview_page.mc_progress_page .mc_pg_cal_hint{
+    margin:10px 0 0;
+    font-size:11px;
+    color:#aaa;
+    text-align:center;
+    line-height:1.4;
+}
+
+/* 빈 상태 — mc_pv_empty 와 동일 톤 */
+#mc_preview_page.mc_progress_page .mc_pg_empty{
+    padding:72px 20px;
+    text-align:center;
+    border:1px solid #e8e8e8;
+    background:#fafafa;
+}
+#mc_preview_page.mc_progress_page .mc_pg_empty p{margin:0;font-size:15px;color:#888;line-height:1.6}
+
+/* 카드 */
+#mc_preview_page.mc_progress_page .mc_pg_list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_card{
+    margin:0;
+    padding:22px 22px 0;
+    border:1px solid #e8e8e8;
+    background:#fff;
+}
+#mc_preview_page.mc_progress_page .mc_pg_card_top{
+    margin:0 0 18px;
+    padding:0 0 14px;
+    border-bottom:1px solid #f0f0f0;
+}
+#mc_preview_page.mc_progress_page .mc_pg_period{
+    margin:0;
+    font-size:16px;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    color:#222;
+}
+
+#mc_preview_page.mc_progress_page .mc_pg_block{margin:0 0 18px}
+#mc_preview_page.mc_progress_page .mc_pg_block h5{
+    margin:0 0 8px;
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:0.2px;
+    color:#8a8a8a;
+}
+#mc_preview_page.mc_progress_page .mc_pg_block_h{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:space-between;
+    gap:8px;
+    margin:0 0 8px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_block_h h5{margin:0}
+#mc_preview_page.mc_progress_page .mc_pg_due{
+    font-size:12px;
+    font-weight:600;
+    color:#c45c5c;
+}
+#mc_preview_page.mc_progress_page .mc_pg_block p{
+    margin:0;
+    font-size:15px;
+    line-height:1.7;
+    color:#333;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+    white-space:pre-wrap;
+}
+#mc_preview_page.mc_progress_page .mc_pg_mute{color:#aaa;font-weight:400}
+#mc_preview_page.mc_progress_page .mc_pg_reply{
+    margin-top:10px !important;
+    padding-top:10px;
+    border-top:1px dashed #eee;
+    font-size:14px !important;
+    color:#666 !important;
+    word-break:break-word;
+    overflow-wrap:anywhere;
+    white-space:pre-wrap;
+}
+
+/* 복습 영상 */
+#mc_preview_page.mc_progress_page .mc_pg_review_btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    width:100%;
+    padding:14px 16px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+    text-align:left;
+    cursor:pointer;
+    font:inherit;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_btn:hover{border-color:#d8d8d8;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+#mc_preview_page.mc_progress_page .mc_pg_review_play{
+    flex:0 0 auto;
+    position:relative;
+    width:40px;
+    height:40px;
+    border:1px solid #e5e5e5;
+    background:#fafafa;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_play:after{
+    content:"";
+    position:absolute;
+    left:15px;top:12px;
+    border-style:solid;
+    border-width:8px 0 8px 12px;
+    border-color:transparent transparent transparent #555;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_btn:hover .mc_pg_review_play{
+    border-color:#fe7013;
+    background:#fe7013;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_btn:hover .mc_pg_review_play:after{
+    border-color:transparent transparent transparent #fff;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_meta{display:flex;flex-direction:column;gap:3px;min-width:0}
+#mc_preview_page.mc_progress_page .mc_pg_review_meta strong{
+    font-size:14px;
+    font-weight:600;
+    color:#222;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_meta em{
+    font-style:normal;
+    font-size:12px;
+    color:#999;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_bar{
+    margin:8px 0 0;
+    height:4px;
+    background:#eee;
+    overflow:hidden;
+}
+#mc_preview_page.mc_progress_page .mc_pg_review_bar i{
+    display:block;
+    height:100%;
+    width:0;
+    background:#fe7013;
+}
+
+/* 출결·과제 */
+#mc_preview_page.mc_progress_page .mc_pg_status{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:1px;
+    margin:8px -22px 0;
+    background:#ececec;
+    border-top:1px solid #e8e8e8;
+}
+#mc_preview_page.mc_progress_page .mc_pg_stat{
+    padding:16px 12px;
+    text-align:center;
+    background:#f7f7f7;
+}
+#mc_preview_page.mc_progress_page .mc_pg_stat .k{
+    display:block;
+    margin:0 0 6px;
+    font-size:12px;
+    color:#888;
+    font-weight:500;
+}
+#mc_preview_page.mc_progress_page .mc_pg_stat .v{
+    display:block;
+    font-size:24px;
+    font-weight:700;
+    letter-spacing:0.5px;
+    line-height:1;
+    color:#bbb;
+}
+#mc_preview_page.mc_progress_page .mc_pg_stat.is-ok .v{color:#2f6a57}
+#mc_preview_page.mc_progress_page .mc_pg_stat.is-no .v{color:#b35a12}
+
+/* lightbox */
+#mc_pg_lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(17,17,17,.82);
+}
+#mc_pg_lightbox.is-open{display:flex}
+#mc_pg_lightbox .mc_pg_lb_panel{
+    position:relative;
+    width:min(960px,100%);
+    background:#000;
+}
+#mc_pg_lightbox .mc_pg_lb_frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+}
+#mc_pg_lightbox .mc_pg_lb_frame iframe,
+#mc_pg_lightbox #mc_pg_yt_player{
+    position:absolute;inset:0;
+    width:100%;height:100%;
+    border:0;
+}
+#mc_pg_lightbox .mc_pg_lb_close{
+    position:absolute;
+    right:0;top:-40px;
+    width:36px;height:36px;
+    padding:0;border:0;
+    background:transparent;
+    color:#fff;
+    font-size:28px;
+    line-height:1;
+    cursor:pointer;
+}
+#mc_pg_lightbox .mc_pg_lb_caption{
+    padding:14px 16px;
+    font-size:15px;
+    font-weight:500;
+    color:#fff;
+    background:#111;
+}
+
+@media (max-width:1024px){
+/* 맛보기/내강좌와 동일: 하단 여백은 페이지 padding만 사용 */
+.mc-progress-wrap #sh_content{margin:28px auto 0 !important}
+#mc_preview_page.mc_progress_page{padding:0 16px 52px}
+#mc_preview_page.mc_progress_page .mc_pg_toolbar{
+    gap:10px;
+    margin:0 0 24px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_control,
+#mc_preview_page.mc_progress_page .mc_pg_field_class .mc_pg_field_control,
+#mc_preview_page.mc_progress_page .mc_pg_field_date .mc_pg_field_control{
+    height:48px;
+    min-height:48px;
+    max-height:48px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_class,
+#mc_preview_page.mc_progress_page .mc_pg_field_date{
+    width:100%;
+    max-width:100%;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn{
+    font-size:14px;
+    padding:0 14px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_nav{flex-basis:40px;width:40px;font-size:18px}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn{gap:6px;padding:0 8px}
+#mc_preview_page.mc_progress_page .mc_pg_dateyear{font-size:12px}
+#mc_preview_page.mc_progress_page .mc_pg_datelabel{font-size:14px;font-weight:600;letter-spacing:-0.25px}
+#mc_preview_page.mc_progress_page .mc_pg_calendar,
+#mc_preview_page.mc_progress_page .mc_pg_class_menu{
+    left:0;
+    right:0;
+    width:100%;
+    transform:none;
+}
+}
+@media (max-width:640px){
+.mc-progress-wrap #sh_content{margin:24px auto 0 !important}
+#mc_preview_page.mc_progress_page{padding:0 12px 44px}
+#mc_preview_page.mc_progress_page .mc_pg_toolbar{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin:0 0 22px;
+}
+/* 모바일도 PC와 동일 박스 규격 유지 */
+#mc_preview_page.mc_progress_page .mc_pg_field_control,
+#mc_preview_page.mc_progress_page .mc_pg_field_class .mc_pg_field_control,
+#mc_preview_page.mc_progress_page .mc_pg_field_date .mc_pg_field_control{
+    height:48px;
+    min-height:48px;
+    max-height:48px;
+    width:100%;
+    max-width:100%;
+}
+#mc_preview_page.mc_progress_page .mc_pg_field_class,
+#mc_preview_page.mc_progress_page .mc_pg_field_date{
+    width:100%;
+    max-width:100%;
+}
+#mc_preview_page.mc_progress_page .mc_pg_classbtn{
+    font-size:14px;
+    padding:0 14px;
+}
+#mc_preview_page.mc_progress_page .mc_pg_nav{flex-basis:40px;width:40px;font-size:18px}
+#mc_preview_page.mc_progress_page .mc_pg_datebtn{padding:0 8px;gap:7px}
+#mc_preview_page.mc_progress_page .mc_pg_dateyear{font-size:12px}
+#mc_preview_page.mc_progress_page .mc_pg_datelabel{font-size:14px;font-weight:600;letter-spacing:-0.25px}
+#mc_preview_page.mc_progress_page .mc_pg_calendar{
+    left:0;
+    right:0;
+    width:100%;
+    transform:none;
+}
+#mc_preview_page.mc_progress_page .mc_pg_card{padding:18px 16px 0}
+#mc_preview_page.mc_progress_page .mc_pg_status{margin:8px -16px 0}
+#mc_preview_page.mc_progress_page .mc_pg_period{font-size:15px}
+#mc_preview_page.mc_progress_page .mc_pg_block p{font-size:14px}
+#mc_preview_page.mc_progress_page .mc_pg_stat .v{font-size:22px}
+#mc_pg_lightbox{padding:16px}
+#mc_pg_lightbox .mc_pg_lb_close{top:-36px}
+}

@@ -1,0 +1,67 @@
+@charset "utf-8";
+
+/* =========================== 맛보기강좌 본문 (배너/SNB는 edu1023 sh_sub·sh_common 그대로) */
+/* PC: 중간메뉴바(#sh_aside) 위치는 템플릿과 동일 — sh_common margin:-33px 유지 */
+@media (min-width:1025px){
+/* aside ↔ mc_pv_head 간격: sh_common #sh_content margin 95px → 축소 */
+.mc-preview-wrap #sh_content{margin-top:52px;margin-bottom:64px}
+}
+
+#mc_preview_page{padding:0 0 64px;font-family:'Noto Sans KR',sans-serif;color:#555}
+#mc_preview_page .mc_pv_head{margin:0 0 28px;padding:0 4px}
+#mc_preview_page .mc_pv_head .mc_pv_eyebrow{margin:0 0 8px;font-size:12px;font-weight:500;letter-spacing:2px;color:#fe7013;text-transform:uppercase}
+#mc_preview_page .mc_pv_head h4{margin:0 0 10px;font-size:28px;font-weight:700;line-height:1.35;letter-spacing:-0.6px;color:#222}
+#mc_preview_page .mc_pv_head p{margin:0;max-width:520px;font-size:15px;font-weight:400;line-height:1.7;color:#777;word-break:keep-all}
+
+#mc_preview_page .mc_pv_grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 22px;margin:0;padding:0;list-style:none}
+#mc_preview_page .mc_pv_card{margin:0;padding:0;background:#fff;border:1px solid #e8e8e8;transition:border-color .2s ease, box-shadow .2s ease}
+#mc_preview_page .mc_pv_card:hover{border-color:#ddd;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+#mc_preview_page .mc_pv_card a{display:block;color:inherit;text-decoration:none}
+#mc_preview_page .mc_pv_card a:focus{outline:2px solid #fe7013;outline-offset:2px}
+
+#mc_preview_page .mc_pv_thumb{position:relative;overflow:hidden;aspect-ratio:16 / 9;background:#1a1a1a}
+#mc_preview_page .mc_pv_thumb img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .35s ease}
+#mc_preview_page .mc_pv_card a:hover .mc_pv_thumb img{transform:scale(1.04)}
+#mc_preview_page .mc_pv_thumb .mc_pv_play{position:absolute;left:50%;top:50%;width:52px;height:52px;margin:-26px 0 0 -26px;border:2px solid rgba(255,255,255,.92);border-radius:0;background:rgba(0,0,0,.35);pointer-events:none}
+#mc_preview_page .mc_pv_thumb .mc_pv_play:after{content:"";position:absolute;left:20px;top:16px;border-style:solid;border-width:10px 0 10px 16px;border-color:transparent transparent transparent #fff}
+#mc_preview_page .mc_pv_thumb .mc_pv_time{position:absolute;right:10px;bottom:10px;padding:3px 8px;font-size:12px;font-weight:500;line-height:1.4;color:#fff;letter-spacing:0;background:rgba(0,0,0,.72);font-variant-numeric:tabular-nums}
+
+#mc_preview_page .mc_pv_body{padding:16px 16px 18px;border-top:1px solid #f0f0f0}
+#mc_preview_page .mc_pv_body .mc_pv_title{display:flex;align-items:center;gap:8px;margin:0;font-size:16px;font-weight:500;line-height:1.45;letter-spacing:-0.3px;color:#222;word-break:keep-all}
+#mc_preview_page .mc_pv_body .mc_pv_badge{flex-shrink:0;display:inline-block;padding:2px 8px;font-size:11px;font-weight:500;line-height:1.4;letter-spacing:0;color:#fe7013;border:1px solid #fe7013;background:#fff;white-space:nowrap}
+#mc_preview_page .mc_pv_body .mc_pv_title_text{display:-webkit-box;min-width:0;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+#mc_preview_page .mc_pv_empty{padding:72px 20px;text-align:center;border:1px solid #e8e8e8;background:#fafafa}
+#mc_preview_page .mc_pv_empty p{margin:0;font-size:15px;color:#888;line-height:1.6}
+
+/* lightbox */
+#mc_pv_lightbox{display:none;position:fixed;inset:0;z-index:100000;align-items:center;justify-content:center;padding:24px;background:rgba(17,17,17,.82)}
+#mc_pv_lightbox.is-open{display:flex}
+#mc_pv_lightbox .mc_pv_lb_panel{position:relative;width:min(960px,100%);background:#000}
+#mc_pv_lightbox .mc_pv_lb_frame{position:relative;width:100%;padding-top:56.25%;background:#000}
+#mc_pv_lightbox .mc_pv_lb_frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+#mc_pv_lightbox .mc_pv_lb_close{position:absolute;right:0;top:-40px;width:36px;height:36px;padding:0;border:0;background:transparent;color:#fff;font-size:28px;line-height:1;cursor:pointer}
+#mc_pv_lightbox .mc_pv_lb_caption{padding:14px 16px;font-size:15px;font-weight:500;color:#fff;background:#111;letter-spacing:-0.2px}
+
+@media (max-width:1024px){
+/* 모바일: 본문만 살짝 띄움 (배너·SNB 숨김은 템플릿 sh_common/sh_sub 그대로) */
+.mc-preview-wrap #sh_content{margin:28px auto 0 !important}
+#mc_preview_page{padding:0 16px 52px}
+#mc_preview_page .mc_pv_head{margin:0 0 18px}
+#mc_preview_page .mc_pv_head h4{font-size:22px}
+#mc_preview_page .mc_pv_grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 14px}
+}
+@media (max-width:640px){
+.mc-preview-wrap #sh_content{margin:24px auto 0 !important}
+#mc_preview_page{padding:0 12px 44px}
+#mc_preview_page .mc_pv_head{margin:0 0 14px}
+#mc_preview_page .mc_pv_head h4{font-size:20px}
+#mc_preview_page .mc_pv_head p{font-size:14px}
+#mc_preview_page .mc_pv_grid{grid-template-columns:1fr;gap:16px}
+#mc_preview_page .mc_pv_body .mc_pv_title{font-size:15px}
+#mc_preview_page .mc_pv_thumb .mc_pv_play{width:44px;height:44px;margin:-22px 0 0 -22px}
+#mc_preview_page .mc_pv_thumb .mc_pv_play:after{left:17px;top:13px;border-width:9px 0 9px 14px}
+}
+@media (max-width:480px){
+.mc-preview-wrap #sh_content{margin:24px auto 0 !important}
+}

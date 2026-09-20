@@ -1,0 +1,555 @@
+@charset "utf-8";
+
+/*
+ * 내강좌 목록 카드 + 강좌 상세
+ */
+
+/* ========== 목록 카드 ========== */
+#mc_preview_page.mc_my_courses .mc_mc_thumb_ph{
+    display:block;
+    width:100%;
+    height:100%;
+    background:#222;
+}
+#mc_preview_page.mc_my_courses .mc_mc_body{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    padding:16px 16px 18px;
+}
+#mc_preview_page.mc_my_courses .mc_mc_title{
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin:0;
+    font-size:16px;
+    font-weight:500;
+    line-height:1.45;
+    letter-spacing:-0.3px;
+    color:#222;
+    word-break:keep-all;
+}
+#mc_preview_page.mc_my_courses .mc_mc_status{
+    flex-shrink:0;
+    display:inline-block;
+    margin-top:1px;
+    padding:2px 8px;
+    font-size:11px;
+    font-weight:500;
+    line-height:1.4;
+    white-space:nowrap;
+    background:#fff;
+}
+#mc_preview_page.mc_my_courses .mc_mc_status.is-ongoing{color:#fe7013;border:1px solid #fe7013}
+#mc_preview_page.mc_my_courses .mc_mc_status.is-done{color:#888;border:1px solid #ccc}
+#mc_preview_page.mc_my_courses .mc_mc_title_text{
+    display:-webkit-box;
+    min-width:0;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+#mc_preview_page.mc_my_courses .mc_mc_teacher{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin:0;
+}
+#mc_preview_page.mc_my_courses .mc_mc_avatar{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    object-fit:cover;
+    flex-shrink:0;
+    border:1px solid #ebebeb;
+    background:#f5f5f5;
+}
+#mc_preview_page.mc_my_courses .mc_mc_avatar.is-empty{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:500;
+    color:#aaa;
+}
+#mc_preview_page.mc_my_courses .mc_mc_teacher_name{
+    font-size:13px;
+    font-weight:400;
+    letter-spacing:-0.2px;
+    color:#666;
+}
+#mc_preview_page.mc_my_courses .mc_mc_meta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    margin:0;
+    padding:0;
+    font-size:12px;
+    font-weight:400;
+    line-height:1.5;
+    color:#999;
+}
+#mc_preview_page.mc_my_courses .mc_mc_meta > span{display:inline-block;max-width:100%}
+#mc_preview_page.mc_my_courses .mc_mc_meta > span + span::before{
+    content:"·";
+    display:inline-block;
+    margin:0 6px;
+    color:#ccc;
+}
+#mc_preview_page.mc_my_courses .mc_mc_meta_book{
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    max-width:12em;
+}
+
+/* ========== 강좌 상세 ========== */
+#mc_my_course_view{
+    padding:0 0 72px;
+    font-family:'Noto Sans KR',sans-serif;
+    color:#555;
+}
+
+#mc_my_course_view .mc_cv_back{margin:0 0 22px}
+#mc_my_course_view .mc_cv_back a{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:14px;
+    color:#888;
+    text-decoration:none;
+}
+#mc_my_course_view .mc_cv_back a:hover{color:#fe7013}
+#mc_my_course_view .mc_cv_back .fa{font-size:13px}
+
+#mc_my_course_view .mc_cv_hero{
+    margin:0 0 8px;
+    padding:0 0 24px;
+    border-bottom:1px solid #ececec;
+}
+#mc_my_course_view .mc_cv_hero_main{
+    display:flex;
+    align-items:flex-start;
+    gap:20px;
+}
+#mc_my_course_view .mc_cv_teacher_block{
+    flex-shrink:0;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    width:88px;
+    text-align:center;
+}
+#mc_my_course_view .mc_cv_avatar{
+    width:72px;
+    height:72px;
+    border-radius:50%;
+    object-fit:cover;
+    border:1px solid #e5e5e5;
+    background:#f3f3f3;
+}
+#mc_my_course_view .mc_cv_avatar.is-empty{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    font-size:22px;
+    font-weight:500;
+    color:#aaa;
+}
+#mc_my_course_view .mc_cv_teacher_meta{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+    min-width:0;
+}
+#mc_my_course_view .mc_cv_teacher_label{
+    font-size:11px;
+    font-weight:400;
+    color:#999;
+    letter-spacing:-0.2px;
+}
+#mc_my_course_view .mc_cv_teacher_name{
+    font-size:13px;
+    font-weight:600;
+    color:#333;
+    letter-spacing:-0.2px;
+    word-break:keep-all;
+}
+
+#mc_my_course_view .mc_cv_hero_text{
+    flex:1;
+    min-width:0;
+}
+#mc_my_course_view .mc_cv_badges{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin:0 0 12px;
+}
+#mc_my_course_view .mc_cv_badge{
+    display:inline-block;
+    padding:3px 9px;
+    font-size:11px;
+    font-weight:500;
+    line-height:1.4;
+    letter-spacing:-0.1px;
+    white-space:nowrap;
+    border:1px solid transparent;
+}
+/* 진행중 / 완강 */
+#mc_my_course_view .mc_cv_badge.is-status-ongoing{
+    color:#fff;
+    background:#fe7013;
+    border-color:#fe7013;
+}
+#mc_my_course_view .mc_cv_badge.is-status-done{
+    color:#fff;
+    background:#6b7280;
+    border-color:#6b7280;
+}
+/* 자체교재 / 시중교재 */
+#mc_my_course_view .mc_cv_badge.is-book-own{
+    color:#2f6a57;
+    background:#eef6f2;
+    border-color:#b7d4c8;
+}
+#mc_my_course_view .mc_cv_badge.is-book-market{
+    color:#3d5a80;
+    background:#eef2f7;
+    border-color:#b8c7d9;
+}
+/* 정규수업 / 특강수업 */
+#mc_my_course_view .mc_cv_badge.is-type-regular{
+    color:#444;
+    background:#f4f4f4;
+    border-color:#d0d0d0;
+}
+#mc_my_course_view .mc_cv_badge.is-type-special{
+    color:#8a5a16;
+    background:#faf4ea;
+    border-color:#e2c89a;
+}
+
+#mc_my_course_view .mc_cv_title{
+    margin:0 0 14px;
+    font-size:26px;
+    font-weight:700;
+    line-height:1.35;
+    letter-spacing:-0.55px;
+    color:#222;
+    word-break:keep-all;
+}
+
+#mc_my_course_view .mc_cv_facts{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 16px;
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+#mc_my_course_view .mc_cv_facts li{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:13px;
+    font-weight:400;
+    color:#555;
+}
+#mc_my_course_view .mc_cv_facts .fa{
+    font-size:13px;
+    color:#b0b0b0;
+    width:14px;
+    text-align:center;
+}
+
+/* 탭 */
+#mc_my_course_view .mc_cv_tabs{
+    display:flex;
+    gap:0;
+    margin:0 0 28px;
+    border-bottom:1px solid #e8e8e8;
+}
+#mc_my_course_view .mc_cv_tab{
+    position:relative;
+    flex:1;
+    max-width:160px;
+    margin:0;
+    padding:14px 8px;
+    border:0;
+    background:transparent;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:500;
+    color:#999;
+    letter-spacing:-0.3px;
+    cursor:pointer;
+    text-align:center;
+}
+#mc_my_course_view .mc_cv_tab.is-on{
+    color:#222;
+}
+#mc_my_course_view .mc_cv_tab.is-on:after{
+    content:"";
+    position:absolute;
+    left:0;right:0;bottom:-1px;
+    height:2px;
+    background:#fe7013;
+}
+#mc_my_course_view .mc_cv_tab:hover{color:#555}
+
+#mc_my_course_view .mc_cv_panel{display:none}
+#mc_my_course_view .mc_cv_panel.is-on{display:block}
+
+/* 강좌정보 / 교재 — key-value 표 */
+#mc_my_course_view .mc_cv_table.mc_cv_kv{
+    table-layout:fixed;
+}
+#mc_my_course_view .mc_cv_table.mc_cv_kv th{
+    width:120px;
+    padding:16px 14px;
+    background:#fafafa;
+    border-bottom:1px solid #f0f0f0;
+    border-right:1px solid #f0f0f0;
+    font-size:13px;
+    font-weight:500;
+    color:#777;
+    letter-spacing:-0.2px;
+    text-align:left;
+    vertical-align:top;
+    white-space:nowrap;
+}
+#mc_my_course_view .mc_cv_table.mc_cv_kv td{
+    padding:16px 16px;
+    border-bottom:1px solid #f0f0f0;
+    font-size:14px;
+    font-weight:400;
+    line-height:1.7;
+    color:#333;
+    word-break:keep-all;
+    vertical-align:top;
+}
+#mc_my_course_view .mc_cv_table.mc_cv_kv tr:last-child th,
+#mc_my_course_view .mc_cv_table.mc_cv_kv tr:last-child td{border-bottom:0}
+#mc_my_course_view .mc_cv_empty{color:#bbb}
+#mc_my_course_view .mc_cv_table.mc_cv_kv .mc_cv_badge{vertical-align:middle}
+
+/* 강의 표 */
+#mc_my_course_view .mc_cv_table_wrap{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border:1px solid #e8e8e8;
+}
+#mc_my_course_view .mc_cv_table{
+    width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+}
+#mc_my_course_view .mc_cv_table th,
+#mc_my_course_view .mc_cv_table td{
+    padding:14px 12px;
+    border-bottom:1px solid #f0f0f0;
+    text-align:left;
+    vertical-align:middle;
+    font-size:14px;
+}
+#mc_my_course_view .mc_cv_table thead th{
+    background:#fafafa;
+    font-size:12px;
+    font-weight:500;
+    color:#888;
+    letter-spacing:-0.2px;
+    text-align:center;
+}
+#mc_my_course_view .mc_cv_table tbody tr:last-child td{border-bottom:0}
+#mc_my_course_view .mc_cv_table tbody tr:hover{background:#fcfcfc}
+#mc_my_course_view .mc_cv_table .col-num{width:72px}
+#mc_my_course_view .mc_cv_table .col-title{
+    width:auto;
+    overflow:hidden;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+}
+#mc_my_course_view .mc_cv_table .col-time{width:88px;color:#777;font-variant-numeric:tabular-nums;white-space:nowrap;text-align:center}
+#mc_my_course_view .mc_cv_table .col-prog{width:140px;text-align:center}
+
+#mc_my_course_view .mc_cv_lec_open{
+    display:inline-flex;
+    align-items:center;
+    margin:0;
+    padding:0;
+    border:0;
+    background:transparent;
+    font:inherit;
+    color:inherit;
+    text-align:left;
+    cursor:pointer;
+}
+#mc_my_course_view .mc_cv_lec_badge{
+    display:inline-block;
+    min-width:42px;
+    padding:3px 8px;
+    font-size:12px;
+    font-weight:500;
+    line-height:1.4;
+    color:#fe7013;
+    border:1px solid #fe7013;
+    background:#fff;
+    text-align:center;
+    font-variant-numeric:tabular-nums;
+}
+#mc_my_course_view .mc_cv_lec_title{
+    display:block;
+    width:100%;
+    max-width:100%;
+    box-sizing:border-box;
+    white-space:normal;
+    word-break:keep-all;
+    overflow-wrap:break-word;
+    font-size:14px;
+    font-weight:500;
+    line-height:1.45;
+    letter-spacing:-0.25px;
+    color:#222;
+}
+#mc_my_course_view .mc_cv_lec_title:hover{color:#fe7013}
+
+#mc_my_course_view .mc_cv_prog{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+}
+#mc_my_course_view .mc_cv_prog_bar{
+    flex:1;
+    height:4px;
+    background:#ececec;
+    overflow:hidden;
+}
+#mc_my_course_view .mc_cv_prog_bar i{
+    display:block;
+    height:100%;
+    width:0;
+    background:#fe7013;
+    transition:width .25s ease;
+}
+#mc_my_course_view .mc_cv_prog em{
+    flex-shrink:0;
+    min-width:2.6em;
+    font-style:normal;
+    font-size:12px;
+    color:#888;
+    font-variant-numeric:tabular-nums;
+    text-align:right;
+}
+
+/* 라이트박스 + YT */
+#mc_cv_lightbox{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    align-items:center;
+    justify-content:center;
+    padding:24px;
+    background:rgba(17,17,17,.82);
+}
+#mc_cv_lightbox.is-open{display:flex}
+#mc_cv_lightbox .mc_cv_lb_panel{
+    position:relative;
+    width:min(960px,100%);
+    background:#000;
+}
+#mc_cv_lightbox .mc_cv_lb_frame{
+    position:relative;
+    width:100%;
+    padding-top:56.25%;
+    background:#000;
+}
+#mc_cv_lightbox #mc_cv_yt_player,
+#mc_cv_lightbox #mc_cv_yt_player iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+}
+#mc_cv_lightbox .mc_cv_lb_close{
+    position:absolute;
+    right:0;
+    top:-40px;
+    width:36px;
+    height:36px;
+    padding:0;
+    border:0;
+    background:transparent;
+    color:#fff;
+    font-size:28px;
+    line-height:1;
+    cursor:pointer;
+}
+#mc_cv_lightbox .mc_cv_lb_caption{
+    padding:14px 16px;
+    font-size:15px;
+    font-weight:500;
+    color:#fff;
+    background:#111;
+    letter-spacing:-0.2px;
+}
+
+@media (max-width:1024px){
+#mc_my_course_view{padding:0 16px 56px}
+#mc_my_course_view .mc_cv_title{font-size:22px}
+#mc_preview_page.mc_my_courses .mc_mc_title{font-size:15px}
+}
+
+@media (max-width:640px){
+#mc_my_course_view{padding:0 12px 48px}
+#mc_my_course_view .mc_cv_hero{margin:0 0 4px;padding:0 0 18px}
+#mc_my_course_view .mc_cv_hero_main{gap:14px}
+#mc_my_course_view .mc_cv_teacher_block{width:72px}
+#mc_my_course_view .mc_cv_avatar{width:56px;height:56px}
+#mc_my_course_view .mc_cv_avatar.is-empty{font-size:18px}
+#mc_my_course_view .mc_cv_teacher_name{font-size:12px}
+#mc_my_course_view .mc_cv_title{font-size:20px;margin:0 0 12px}
+#mc_my_course_view .mc_cv_badges{gap:5px;margin:0 0 10px}
+#mc_my_course_view .mc_cv_badge{padding:2px 7px;font-size:10px}
+#mc_my_course_view .mc_cv_facts{gap:6px 12px}
+#mc_my_course_view .mc_cv_facts li{font-size:12px}
+#mc_my_course_view .mc_cv_tabs{margin:0 0 18px}
+#mc_my_course_view .mc_cv_tab{
+    max-width:none;
+    padding:12px 4px;
+    font-size:14px;
+}
+#mc_my_course_view .mc_cv_table.mc_cv_kv th{
+    width:88px;
+    padding:12px 10px;
+    font-size:12px;
+    white-space:normal;
+}
+#mc_my_course_view .mc_cv_table.mc_cv_kv td{
+    padding:12px 12px;
+    font-size:13px;
+    line-height:1.65;
+}
+#mc_my_course_view .mc_cv_table th,
+#mc_my_course_view .mc_cv_table td{padding:12px 8px}
+#mc_my_course_view .mc_cv_table thead th{font-size:12px}
+#mc_my_course_view .mc_cv_table tbody td{font-size:12px}
+#mc_my_course_view .mc_cv_table .col-num{width:52px}
+#mc_my_course_view .mc_cv_table .col-time{width:58px}
+#mc_my_course_view .mc_cv_table .col-prog{width:56px}
+#mc_my_course_view .mc_cv_lec_badge{min-width:38px;padding:2px 6px;font-size:11px}
+#mc_my_course_view .mc_cv_lec_title{font-size:12px}
+#mc_my_course_view .mc_cv_prog{justify-content:center;gap:0}
+#mc_my_course_view .mc_cv_prog_bar{display:none}
+#mc_my_course_view .mc_cv_prog em{min-width:0;text-align:center;font-size:12px}
+#mc_preview_page.mc_my_courses .mc_mc_body{gap:8px;padding:14px}
+#mc_preview_page.mc_my_courses .mc_mc_title{font-size:15px;gap:6px}
+#mc_preview_page.mc_my_courses .mc_mc_meta{font-size:11px}
+#mc_preview_page.mc_my_courses .mc_mc_meta_book{max-width:9em}
+#mc_cv_lightbox{padding:12px}
+#mc_cv_lightbox .mc_cv_lb_close{top:-36px}
+}

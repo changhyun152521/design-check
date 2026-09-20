@@ -1,0 +1,465 @@
+@charset "utf-8";
+
+/*
+ * 수강후기 본문 — 메인 수업안내 카드와 동일 위계
+ * label → author(hero) → title(muted) → body
+ * 상단 mc_pv_head는 공지/맛보기와 동일 (레이아웃만 유지)
+ */
+
+#mc_review_page {
+    padding: 0 0 64px;
+    font-family: 'Noto Sans KR', sans-serif;
+    color: #555;
+    word-break: keep-all;
+}
+
+#mc_review_page .mc_pv_head {
+    margin: 0 0 32px;
+    padding: 0 4px;
+}
+#mc_review_page .mc_pv_head .mc_pv_eyebrow {
+    margin: 0 0 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: #fe7013;
+    text-transform: uppercase;
+}
+#mc_review_page .mc_pv_head h4 {
+    margin: 0 0 10px;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.6px;
+    color: #222;
+}
+#mc_review_page .mc_pv_head p {
+    margin: 0;
+    max-width: 520px;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #777;
+}
+
+/* 그리드 */
+#mc_review_page .mc_rv_grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px 20px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    align-items: stretch;
+}
+
+#mc_review_page .mc_rv_card {
+    display: flex;
+    margin: 0;
+    min-width: 0;
+    border: 1px solid #ececec;
+    background: #fff;
+    transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+#mc_review_page .mc_rv_card:hover {
+    border-color: #e0e0e0;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.05);
+}
+
+#mc_review_page .mc_rv_card_inner {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+    padding: 26px 26px 22px;
+    box-sizing: border-box;
+}
+
+/* 헤더: 라벨+번호 → 작성자 → 제목 */
+#mc_review_page .mc_rv_head {
+    flex: 0 0 auto;
+    margin: 0 0 0;
+    min-width: 0;
+}
+#mc_review_page .mc_rv_head_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 12px;
+}
+#mc_review_page .mc_rv_label {
+    display: inline-block;
+    padding: 3px 9px;
+    border: 1px solid #fe7013;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0;
+    color: #fe7013;
+    background: #fff;
+    white-space: nowrap;
+}
+#mc_review_page .mc_rv_num {
+    flex: 0 0 auto;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #d0d0d0;
+    font-variant-numeric: tabular-nums;
+    font-family: Poppins, 'Noto Sans KR', sans-serif;
+}
+
+#mc_review_page .mc_rv_author {
+    display: -webkit-box;
+    margin: 0 0 8px;
+    padding: 0;
+    max-width: 100%;
+    min-width: 0;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.45px;
+    color: #1a1a1a;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+#mc_review_page .mc_rv_title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    color: #999;
+    min-width: 0;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+/* 본문 */
+#mc_review_page .mc_rv_body {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin: 14px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid #f0f0f0;
+}
+#mc_review_page .mc_rv_body_txt {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.75;
+    letter-spacing: -0.15px;
+    color: #777;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+/* PC: 기존 7줄 → 5줄 (약 2줄 축소) */
+#mc_review_page .mc_rv_card.is-clamp .mc_rv_body_txt {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 5;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: calc(1.75em * 5);
+}
+
+#mc_review_page .mc_rv_more {
+    align-self: flex-start;
+    margin-top: 14px;
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.1px;
+    color: #fe7013;
+    cursor: pointer;
+    font-family: inherit;
+}
+#mc_review_page .mc_rv_more:hover {
+    text-decoration: underline;
+}
+
+#mc_review_page .mc_rv_empty {
+    padding: 72px 20px;
+    text-align: center;
+    border: 1px solid #ececec;
+    background: #fafafa;
+}
+#mc_review_page .mc_rv_empty p {
+    margin: 0;
+    font-size: 15px;
+    color: #888;
+    line-height: 1.6;
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+    #mc_review_page {
+        padding: 0 16px 52px;
+    }
+    #mc_review_page .mc_pv_head {
+        margin: 0 0 22px;
+    }
+    #mc_review_page .mc_pv_head h4 {
+        font-size: 22px;
+    }
+    #mc_review_page .mc_rv_grid {
+        gap: 16px 14px;
+    }
+    #mc_review_page .mc_rv_card_inner {
+        padding: 22px 20px 18px;
+    }
+    #mc_review_page .mc_rv_author {
+        font-size: 18px;
+    }
+    #mc_review_page .mc_rv_card.is-clamp .mc_rv_body_txt {
+        -webkit-line-clamp: 5;
+        max-height: calc(1.75em * 5);
+    }
+}
+
+/* Mobile — 1열 */
+@media (max-width: 768px) {
+    #mc_review_page .mc_rv_grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+    #mc_review_page .mc_rv_card_inner {
+        padding: 20px 18px 16px;
+    }
+    #mc_review_page .mc_rv_head_row {
+        margin: 0 0 10px;
+    }
+    #mc_review_page .mc_rv_label {
+        font-size: 10px;
+        padding: 2px 8px;
+    }
+    #mc_review_page .mc_rv_author {
+        font-size: 18px;
+        margin: 0 0 6px;
+        letter-spacing: -0.4px;
+    }
+    #mc_review_page .mc_rv_title {
+        font-size: 13px;
+    }
+    #mc_review_page .mc_rv_body {
+        margin-top: 12px;
+        padding-top: 12px;
+    }
+    #mc_review_page .mc_rv_body_txt {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+    #mc_review_page .mc_rv_card.is-clamp .mc_rv_body_txt {
+        -webkit-line-clamp: 5;
+        max-height: calc(1.7em * 5);
+    }
+    #mc_review_page .mc_rv_more {
+        margin-top: 12px;
+        min-height: 36px;
+        padding: 6px 0;
+    }
+}
+
+@media (max-width: 640px) {
+    #mc_review_page {
+        padding: 0 12px 44px;
+    }
+    #mc_review_page .mc_pv_head {
+        margin: 0 0 16px;
+    }
+    #mc_review_page .mc_pv_head h4 {
+        font-size: 20px;
+    }
+    #mc_review_page .mc_pv_head p {
+        font-size: 14px;
+    }
+    #mc_review_page .mc_rv_card_inner {
+        padding: 18px 16px 14px;
+    }
+    #mc_review_page .mc_rv_author {
+        font-size: 17px;
+    }
+    #mc_review_page .mc_rv_body_txt {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+    #mc_review_page .mc_rv_card.is-clamp .mc_rv_body_txt {
+        -webkit-line-clamp: 4;
+        max-height: calc(1.7em * 4);
+    }
+}
+
+/* ----- 더보기 모달 (이용문의 모달과 동일 골격 · 헤더/푸터 위) ----- */
+body.mc-rv-modal-open {
+    overflow: hidden;
+}
+.mc_rv_modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+.mc_rv_modal[hidden] {
+    display: none !important;
+}
+.mc_rv_modal_dim {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.48);
+}
+.mc_rv_modal_panel {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    max-height: min(78vh, 640px);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 10px 36px rgba(0, 0, 0, 0.18);
+}
+.mc_rv_modal_head {
+    flex-shrink: 0;
+    padding: 22px 24px 16px;
+    border-bottom: 1px solid #f0f0f0;
+    background: #fff;
+}
+.mc_rv_modal_head_row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 12px;
+}
+.mc_rv_modal_head .mc_rv_label {
+    display: inline-block;
+    padding: 3px 9px;
+    border: 1px solid #fe7013;
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #fe7013;
+    background: #fff;
+    white-space: nowrap;
+}
+.mc_rv_modal_close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #888;
+    font-size: 16px;
+    cursor: pointer;
+}
+.mc_rv_modal_close:hover {
+    color: #222;
+}
+.mc_rv_modal_author {
+    margin: 0 0 6px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.35;
+    letter-spacing: -0.45px;
+    color: #1a1a1a;
+    word-break: keep-all;
+}
+.mc_rv_modal_title {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.5;
+    letter-spacing: -0.2px;
+    color: #999;
+    word-break: keep-all;
+}
+.mc_rv_modal_title[hidden] {
+    display: none !important;
+}
+.mc_rv_modal_body {
+    overflow-y: auto;
+    padding: 18px 24px 24px;
+    -webkit-overflow-scrolling: touch;
+}
+.mc_rv_modal_txt {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.8;
+    letter-spacing: -0.15px;
+    color: #555;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+    .mc_rv_modal {
+        padding: 20px 14px;
+        align-items: center;
+        justify-content: center;
+    }
+    .mc_rv_modal_panel {
+        max-width: 100%;
+        max-height: min(82vh, 100%);
+    }
+    .mc_rv_modal_head {
+        padding: 18px 18px 14px;
+    }
+    .mc_rv_modal_author {
+        font-size: 18px;
+    }
+    .mc_rv_modal_body {
+        padding: 14px 18px 20px;
+    }
+    .mc_rv_modal_txt {
+        font-size: 14px;
+        line-height: 1.75;
+    }
+}
+
+@media (max-width: 480px) {
+    .mc_rv_modal {
+        padding: 16px 12px;
+    }
+    .mc_rv_modal_head {
+        padding: 16px 16px 12px;
+    }
+    .mc_rv_modal_author {
+        font-size: 17px;
+    }
+    .mc_rv_modal_body {
+        padding: 12px 16px 18px;
+    }
+    .mc_rv_modal_txt {
+        font-size: 13px;
+        line-height: 1.7;
+    }
+}

@@ -1,0 +1,76 @@
+@charset "utf-8";
+
+/* =========================== SUB */
+#sub_main_banner{position:relative;height:250px;text-align:center}
+#sh_content_tit_wrap{position:absolute;top:63px;left:50%;transform: translateX(-50%); margin-top:-30px;text-align:center;opacity:0;font-family:'Noto Sans KR';font-weight:400}
+#sh_content_tit_wrap h3{padding-bottom:10px;font-size:38px;color:#fff;font-family:'Noto Sans KR';font-weight:700}
+#sh_content_tit_wrap span{font-size:13px;color:#bebebe}
+
+/* 반응형 [s] */
+@media (max-width:1024px){
+#sub_main_banner{height:350px;background:url(../img/sub/head_sub_bg.png)no-repeat center / cover;}
+#sh_content_tit_wrap{top:50%;transform: translate(-50%, -50%);margin-top:0px !important;opacity: 1 !important;}
+#sh_content_tit_wrap h3{font-size:32px;}
+#sh_content_tit_wrap span{font-size:15px;}
+}
+@media (max-width:480px){
+#sub_main_banner{height:55px;border-bottom: 1px solid #e1e1e1; background:none;}
+#sh_content_tit_wrap h3{padding:0px; font-size:16px;color: #000;}
+#sh_content_tit_wrap span{display: none;}
+}
+/* 반응형 [e] */
+
+/* =========================== SNB */
+#l_menu{overflow:hidden;z-index:999;padding:0;border-right:solid 1px #dbdbdb}
+#l_menu li{float:left;margin:0;padding:0;border-right:solid 1px #dbdbdb;font-size:15px;color:#777;line-height:0;z-index:10}
+#aside_wrap .home{float:left;height:58px;padding:0 27px;border-left:solid 1px #dbdbdb;border-right:solid 1px #dbdbdb;font-size:21px;line-height:58px;color:#fe7013}
+.l_menu_OFF a{display:block;padding:0 60px;height:58px;line-height:58px;text-decoration:none;color:#666;word-wrap:break-word;-webkit-transition:.2s;transition:.2s;font-family:'Noto Sans KR';font-weight:500}
+.l_menu_OFF a:hover{background:#f7f7f7}
+.l_menu_ON a{display:block;padding:0 60px;height:58px;border-bottom:3px solid #fe7013;line-height:58px;text-decoration:none;color:#222;background-color:#f7f7f7;word-wrap:break-word;box-sizing:border-box}
+
+/* =========================== 내강의실 SNB (PC) */
+.mc-snb{position:relative;z-index:20;background:#fff;border-bottom:1px solid #e6e6e6}
+.mc-snb__inner{display:flex;align-items:stretch;max-width:1200px;margin:0 auto;min-height:56px}
+.mc-snb__home{display:flex;align-items:center;justify-content:center;flex:0 0 56px;border-right:1px solid #eee;color:#fe7013;font-size:18px;text-decoration:none;transition:background .15s ease,color .15s ease}
+.mc-snb__home:hover{background:#fff8f3;color:#e35f0a}
+.mc-snb__list{display:flex;flex:1 1 auto;margin:0;padding:0;list-style:none}
+.mc-snb__item{position:relative;flex:0 0 auto;margin:0}
+.mc-snb__item a{display:flex;align-items:center;height:56px;padding:0 28px;font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:500;letter-spacing:-0.2px;color:#666;text-decoration:none;border-bottom:2px solid transparent;box-sizing:border-box;transition:color .15s ease,border-color .15s ease,background .15s ease}
+.mc-snb__item a:hover{color:#222;background:#fafafa}
+.mc-snb__item.is-active a{color:#222;font-weight:700;border-bottom-color:#fe7013;background:transparent}
+.mc-snb__item.is-active a:hover{background:transparent}
+@media (max-width:1024px){
+.mc-snb{position:sticky;top:0;z-index:30;box-shadow:0 1px 0 rgba(0,0,0,.02)}
+.mc-snb__inner{min-height:48px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.mc-snb__home{flex:0 0 44px}
+.mc-snb__item a{height:48px;padding:0 16px;font-size:14px;white-space:nowrap}
+}
+@media (max-width:640px){
+.mc-snb__item a{padding:0 14px;font-size:13px}
+}
+
+/* =========================== PAGE */
+#greeting{font-size:15px;font-weight:400;line-height:1.8;letter-spacing:-.2px;color:#777;font-family:'Noto Sans KR'}
+#greeting .tit_area{padding:0 0 40px 5%;font-size:38px;font-weight:100;line-height:1.35;letter-spacing:-.5px;color:#222}
+#greeting .tit_area p{font-weight:600}
+#greeting .img{height:420px;background:url(../img/sub/greeting_img.jpg) center no-repeat;background-size:cover}
+#greeting .cont{padding:40px 0 0 25%}
+#greeting .cont .pl{white-space:pre-line}
+#greeting .cont .sign{margin-top:30px;font-weight:500;color:#222}
+#greeting .cont .sign span{margin-left:20px;font-size:17px}
+
+@media(max-width:1024px){
+#greeting{padding:20px;font-size:14px;line-height:1.6}
+#greeting .tit_area{padding:0;font-size:28px;line-height:1.4;color:#222;word-break:keep-all}
+#greeting .img{height:200px;margin:15px 0}
+#greeting .cont{padding:0}
+#greeting .cont .sign{margin-top:20px}
+#greeting .cont .sign span{margin-left:0;font-size:15px}
+}
+@media(max-width:768px){
+#greeting .cont .pl{white-space:normal}
+}
+@media(max-width:480px){
+#greeting{padding:15px 12px}	
+#greeting .tit_area{font-size:22px}
+}

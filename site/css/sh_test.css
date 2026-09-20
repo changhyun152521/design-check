@@ -1,0 +1,442 @@
+@charset "utf-8";
+
+/* 테스트 현황 — 점수 카드 톤 통일 + 차트 */
+
+#mc_preview_page.mc_test_page{
+    max-width:720px;
+    margin:0 auto;
+}
+
+/* ── 리포트 카드 ── */
+#mc_preview_page.mc_test_page .mc_ts_report{
+    margin:0 0 28px;
+    padding:28px 26px 24px;
+    border:1px solid #e8e8e8;
+    background:#fff;
+}
+#mc_preview_page.mc_test_page .mc_ts_report:last-child{margin-bottom:0}
+
+#mc_preview_page.mc_test_page .mc_ts_report_head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:16px 24px;
+    margin:0 0 24px;
+    padding:0 0 18px;
+    border-bottom:1px solid #f0f0f0;
+}
+#mc_preview_page.mc_test_page .mc_ts_report_head_main{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    min-width:0;
+}
+#mc_preview_page.mc_test_page .mc_ts_badge{
+    display:inline-block;
+    padding:3px 9px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:0.2px;
+    line-height:1.4;
+    border:1px solid #fe7013;
+    color:#fe7013;
+    background:#fff;
+}
+#mc_preview_page.mc_test_page .mc_ts_badge.is-practice{
+    border-color:#888;
+    color:#666;
+}
+#mc_preview_page.mc_test_page .mc_ts_badge.is-online{
+    border-color:#2f6a57;
+    color:#2f6a57;
+}
+#mc_preview_page.mc_test_page .mc_ts_report_title{
+    margin:0;
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:-0.45px;
+    line-height:1.35;
+    color:#222;
+}
+#mc_preview_page.mc_test_page .mc_ts_report_meta{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content:flex-end;
+    gap:6px 10px;
+    font-size:13px;
+    color:#999;
+    line-height:1.4;
+    white-space:nowrap;
+}
+#mc_preview_page.mc_test_page .mc_ts_dot{
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#ccc;
+}
+
+/* ── 점수 요약 ── */
+#mc_preview_page.mc_test_page .mc_ts_scores{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin:0 0 30px;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_card{
+    padding:18px 14px 16px;
+    border:1px solid #ececec;
+    background:#fafafa;
+    text-align:center;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_card.is-mine{
+    border-color:#f0c9a8;
+    background:#fffaf6;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_label{
+    margin:0 0 8px;
+    font-size:12px;
+    font-weight:500;
+    letter-spacing:0.2px;
+    color:#888;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_card.is-mine .mc_ts_score_label{
+    color:#c45e12;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_value{
+    margin:0 0 6px;
+    display:flex;
+    align-items:baseline;
+    justify-content:center;
+    gap:2px;
+    line-height:1;
+    color:#222;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_value em{
+    font-style:normal;
+    font-size:36px;
+    font-weight:700;
+    letter-spacing:-1.2px;
+    font-variant-numeric:tabular-nums;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_card.is-mine .mc_ts_score_value em{
+    color:#fe7013;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_value span{
+    font-size:14px;
+    font-weight:600;
+    color:#666;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_cap{
+    margin:0;
+    font-size:11px;
+    line-height:1.45;
+    color:#aaa;
+    letter-spacing:-0.1px;
+}
+
+/* ── 섹션 ── */
+#mc_preview_page.mc_test_page .mc_ts_section{
+    margin:0 0 28px;
+}
+#mc_preview_page.mc_test_page .mc_ts_section:last-child{margin-bottom:2px}
+#mc_preview_page.mc_test_page .mc_ts_section_head{
+    margin:0 0 16px;
+}
+#mc_preview_page.mc_test_page .mc_ts_section_head h6{
+    margin:0 0 4px;
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:-0.3px;
+    color:#222;
+}
+#mc_preview_page.mc_test_page .mc_ts_section_head p{
+    margin:0;
+    font-size:13px;
+    line-height:1.55;
+    color:#999;
+    word-break:keep-all;
+}
+
+/* ── 난이도: 외곽 박스 없이 / 상중하 = 점수카드 동일 클래스 ── */
+#mc_preview_page.mc_test_page .mc_ts_diff_panel{
+    display:grid;
+    grid-template-columns:minmax(0,1.05fr) minmax(0,0.95fr);
+    gap:12px 28px;
+    align-items:center;
+    padding:0;
+    border:0;
+    background:transparent;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_frame{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-width:0;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_wrap{
+    position:relative;
+    width:100%;
+    max-width:300px;
+    aspect-ratio:1 / 1;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_wrap canvas{
+    display:block;
+    width:100% !important;
+    height:100% !important;
+}
+
+#mc_preview_page.mc_test_page .mc_ts_diff_stats{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:10px;
+}
+/* PC: 세로 3장이지만 점수카드와 동일 컴포넌트 — 수치만 약간 압축 */
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_card{
+    padding:14px 12px 12px;
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_value em{
+    font-size:28px;
+    letter-spacing:-1px;
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_value span{
+    font-size:13px;
+}
+
+/* ── 소단원 막대: 가로형 (PC·모바일 공통) ── */
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap{
+    position:relative;
+    width:100%;
+    height:220px;
+    margin:0;
+    padding:0;
+    border:0;
+    background:transparent;
+    overflow:visible;
+}
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap canvas{
+    display:block;
+    width:100% !important;
+    min-width:0 !important;
+    height:100% !important;
+}
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap[data-bar-count="1"],
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap[data-bar-count="2"]{
+    height:auto;
+}
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap.is-scroll canvas{
+    min-width:0;
+}
+
+#mc_preview_page.mc_test_page .mc_ts_empty_inline{
+    padding:28px 16px;
+    border:1px dashed #e0e0e0;
+    background:#fafafa;
+    font-size:13px;
+    color:#999;
+    text-align:center;
+    line-height:1.55;
+}
+
+/* ── 태블릿 ── */
+@media (max-width:860px){
+#mc_preview_page.mc_test_page{
+    padding:0 16px 52px;
+}
+#mc_preview_page.mc_test_page .mc_ts_report{
+    padding:22px 18px 18px;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_value em{font-size:32px}
+#mc_preview_page.mc_test_page .mc_ts_diff_panel{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:10px 18px;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_wrap{max-width:260px}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_value em{font-size:26px}
+}
+
+/* ── 모바일 ── */
+@media (max-width:640px){
+#mc_preview_page.mc_test_page{
+    padding:0 12px 44px;
+}
+#mc_preview_page.mc_test_page .mc_ts_report{
+    margin:0 0 20px;
+    padding:18px 14px 16px;
+}
+#mc_preview_page.mc_test_page .mc_ts_report_head{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
+    margin:0 0 18px;
+    padding:0 0 14px;
+}
+#mc_preview_page.mc_test_page .mc_ts_report_title{font-size:17px}
+#mc_preview_page.mc_test_page .mc_ts_report_meta{
+    justify-content:flex-start;
+    font-size:12px;
+    white-space:normal;
+}
+
+#mc_preview_page.mc_test_page .mc_ts_scores{
+    gap:8px;
+    margin:0 0 22px;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_card{
+    padding:14px 8px 12px;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_label{font-size:11px;margin-bottom:6px}
+#mc_preview_page.mc_test_page .mc_ts_score_value em{font-size:26px;letter-spacing:-0.8px}
+#mc_preview_page.mc_test_page .mc_ts_score_value span{font-size:12px}
+#mc_preview_page.mc_test_page .mc_ts_score_cap{font-size:10px}
+
+#mc_preview_page.mc_test_page .mc_ts_section{margin:0 0 22px}
+#mc_preview_page.mc_test_page .mc_ts_section_head{margin-bottom:12px}
+#mc_preview_page.mc_test_page .mc_ts_section_head h6{font-size:14px}
+#mc_preview_page.mc_test_page .mc_ts_section_head p{font-size:12px}
+
+/* 방사형 위 + 상중하 = 위 점수 3칸과 완전 동일 너비·간격 */
+#mc_preview_page.mc_test_page .mc_ts_diff_panel{
+    display:flex;
+    flex-direction:column;
+    align-items:stretch; /* PC용 align-items:center 상속 차단 — 이게 가운데 몰림 원인 */
+    width:100%;
+    gap:14px;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_frame{
+    width:100%;
+}
+#mc_preview_page.mc_test_page .mc_ts_radar_wrap{
+    max-width:220px;
+    margin:0 auto;
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats{
+    width:100%;
+    max-width:none;
+    margin:0;
+    box-sizing:border-box;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:8px; /* .mc_ts_scores 와 동일 */
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_card{
+    width:100%;
+    box-sizing:border-box;
+    padding:14px 8px 12px; /* .mc_ts_scores 모바일과 동일 */
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_label{
+    font-size:11px;
+    margin-bottom:6px;
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_value em{
+    font-size:26px;
+    letter-spacing:-0.8px;
+}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_value span{font-size:12px}
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_cap{font-size:10px}
+
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap{
+    height:auto;
+}
+#mc_preview_page.mc_test_page .mc_ts_bar_wrap canvas{
+    min-width:0 !important;
+}
+}
+
+@media (max-width:380px){
+/* 점수·상중하 모두 3열 유지 (한 줄 스택으로 깨지지 않게) */
+#mc_preview_page.mc_test_page .mc_ts_scores,
+#mc_preview_page.mc_test_page .mc_ts_diff_stats{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+}
+#mc_preview_page.mc_test_page .mc_ts_scores .mc_ts_score_card,
+#mc_preview_page.mc_test_page .mc_ts_diff_stats .mc_ts_score_card{
+    display:block;
+    text-align:center;
+    padding:12px 6px 11px;
+}
+#mc_preview_page.mc_test_page .mc_ts_score_label{margin:0 0 6px}
+#mc_preview_page.mc_test_page .mc_ts_score_value{margin:0 0 6px;justify-content:center}
+#mc_preview_page.mc_test_page .mc_ts_score_cap{
+    grid-column:auto;
+    text-align:center;
+}
+}
+
+/* 차트 커스텀 툴팁 — 월별 통계와 동일 스타일 */
+.mc_ms_chart_tip{
+    position:absolute;
+    z-index:10060;
+    min-width:168px;
+    max-width:min(260px, calc(100vw - 24px));
+    padding:12px 14px;
+    background:#fff;
+    border:1px solid #ececec;
+    box-shadow:0 8px 28px rgba(0,0,0,0.10);
+    pointer-events:none;
+    opacity:0;
+    transform:translateY(4px);
+    transition:opacity 0.12s ease, transform 0.12s ease;
+    font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    letter-spacing:-0.3px;
+    -webkit-font-smoothing:antialiased;
+}
+.mc_ms_chart_tip.is-visible{
+    opacity:1;
+    transform:translateY(0);
+}
+.mc_ms_chart_tip[hidden]{display:none !important}
+.mc_ms_chart_tip_title{
+    margin:0 0 10px;
+    padding:0 0 8px;
+    border-bottom:1px solid #f0f0f0;
+    font-size:13px;
+    font-weight:700;
+    line-height:1.35;
+    color:#222;
+    word-break:keep-all;
+}
+.mc_ms_chart_tip_list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+.mc_ms_chart_tip_list li{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:12px;
+    font-weight:500;
+    color:#666;
+    line-height:1.3;
+}
+.mc_ms_chart_tip_list li span{flex:1;min-width:0}
+.mc_ms_chart_tip_list li em{
+    font-style:normal;
+    font-weight:700;
+    font-variant-numeric:tabular-nums;
+    color:#222;
+    letter-spacing:-0.4px;
+}
+.mc_ms_chart_tip_list.is-plain li span{color:#888}
+
+@media (max-width:640px){
+.mc_ms_chart_tip{
+    min-width:150px;
+    padding:11px 12px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.12);
+}
+.mc_ms_chart_tip_title{
+    font-size:12px;
+    margin-bottom:8px;
+    padding-bottom:7px;
+}
+.mc_ms_chart_tip_list{gap:6px}
+.mc_ms_chart_tip_list li{font-size:11px}
+}

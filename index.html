@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>임규태 확인용 — 배너 미리보기</title>
+  <meta name="description" content="이창현수학 홈페이지 배너 교체 미리보기">
+  <link rel="icon" href="site/img/common/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="app">
+  <section class="app-upload" id="uploadView">
+    <div class="hero-bar">
+      <div>
+        <span class="eyebrow">BANNER PREVIEW</span>
+        <h1>임규태 확인용</h1>
+        <p>배너 사진을 올린 뒤 적용 · 미리보기를 누르면 홈페이지에 반영됩니다.<br>미리보기 화면에서 PC 버전과 모바일 버전을 바꿔 가며 확인할 수 있습니다. 올리지 않은 칸은 기존 이미지가 유지됩니다.</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <article class="card">
+        <h2>상단 배너</h2>
+        <p class="help">히어로 영역 배경입니다. PC는 헤더 뒤 넓은 배경, 모바일은 상단 배너 전체 배경으로 들어갑니다. 권장: 가로가 긴 이미지 (약 1920×800).</p>
+        <label class="drop">
+          <input id="fileTop" type="file" accept="image/*">
+          <img class="preview" alt="">
+          <div class="drop-empty">사진을 선택하거나 끌어다 놓기<span>현재 기본: head_bg.png</span></div>
+        </label>
+        <div class="drop-meta">
+          <span data-filename>기본 이미지가 유지됩니다</span>
+          <button type="button" data-clear>기본으로</button>
+        </div>
+      </article>
+
+      <article class="card">
+        <h2>학습 시스템 배너</h2>
+        <p class="help">「학생·학부모가 함께 쓰는 이창현수학 학습 시스템」 섹션 배경입니다. 권장: 가로가 긴 이미지 (약 1920×460).</p>
+        <label class="drop">
+          <input id="fileSystem" type="file" accept="image/*">
+          <img class="preview" alt="">
+          <div class="drop-empty">사진을 선택하거나 끌어다 놓기<span>현재 기본: in02_bg.png</span></div>
+        </label>
+        <div class="drop-meta">
+          <span data-filename>기본 이미지가 유지됩니다</span>
+          <button type="button" data-clear>기본으로</button>
+        </div>
+      </article>
+
+      <article class="card span-2">
+        <h2>중간 슬라이드 배너</h2>
+        <p class="help">STEP 카드 아래 슬라이드 2장입니다. 사진만 바뀌고, 배너 전체를 클릭하면 이동합니다. 권장: 약 860×260.</p>
+        <div class="slide-row">
+          <div class="slide-col">
+            <h3>슬라이드 1</h3>
+            <label class="drop">
+              <input id="fileSlide1" type="file" accept="image/*">
+              <img class="preview" alt="">
+              <div class="drop-empty">사진을 선택하거나 끌어다 놓기<span>현재 기본: banner01.png</span></div>
+            </label>
+            <div class="drop-meta">
+              <span data-filename>기본 이미지가 유지됩니다</span>
+              <button type="button" data-clear>기본으로</button>
+            </div>
+          </div>
+          <div class="slide-col">
+            <h3>슬라이드 2</h3>
+            <label class="drop">
+              <input id="fileSlide2" type="file" accept="image/*">
+              <img class="preview" alt="">
+              <div class="drop-empty">사진을 선택하거나 끌어다 놓기<span>현재 기본: banner03.png</span></div>
+            </label>
+            <div class="drop-meta">
+              <span data-filename>기본 이미지가 유지됩니다</span>
+              <button type="button" data-clear>기본으로</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div class="actions">
+      <div class="btn-row">
+        <button type="button" class="btn" id="btnPreviewDefault">기본 이미지로 미리보기</button>
+        <button type="button" class="btn btn-primary" id="btnPreview">적용 · 미리보기</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="app-preview" id="previewView" hidden>
+    <div class="preview-toolbar">
+      <div class="title">이창현수학 미리보기<em id="modeLabel">PC</em></div>
+      <div class="toolbar-right">
+        <div class="device-toggle" role="group" aria-label="미리보기 기기">
+          <button type="button" data-device="pc" class="is-on">PC</button>
+          <button type="button" data-device="mobile">모바일</button>
+        </div>
+        <button type="button" class="btn" id="btnBack">배너 다시 올리기</button>
+      </div>
+    </div>
+    <div class="preview-stage is-pc" id="previewStage">
+      <div class="phone" id="phoneFrame">
+        <iframe id="previewFrame" title="이창현수학 홈페이지 미리보기"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
