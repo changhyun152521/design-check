@@ -24,7 +24,7 @@
   <meta name="twitter:image" content="/og-share.jpg">
   <link rel="preload" as="image" href="img/intro-stage.jpg">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=21">
+  <link rel="stylesheet" href="css/app.css?v=23">
   <link rel="stylesheet" href="css/history.css?v=5">
   <link rel="stylesheet" href="css/home.css?v=9">
 </head>
@@ -466,6 +466,59 @@
     </div>
   </div>
 
-  <script src="js/app.js?v=23"></script>
+  <div class="promo" id="promoLayer" hidden>
+    <div class="promo-dim" aria-hidden="true"></div>
+    <div class="promo-board">
+      <article class="promo-card" data-promo="school" style="z-index:5">
+        <button type="button" class="promo-x" data-promo-close aria-label="닫기"></button>
+        <figure>
+          <img src="img/home/visual-1.jpg" alt="">
+        </figure>
+        <div class="promo-body">
+          <p class="promo-kicker">Gongju High School</p>
+          <h2>임규태 공주고등학교 자랑</h2>
+          <p class="promo-copy">공주고등학교를 졸업하고 국립창극단에 입단한 소리꾼입니다. 모교가 기리는 이름이 국립극장과 세계 무대에서 판소리를 이어 갑니다.</p>
+          <div class="promo-foot">
+            <button type="button" class="promo-today" data-promo-today>오늘 하루 보지 않기</button>
+            <button type="button" class="promo-close" data-promo-close>닫기</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo-card" data-promo="nation" style="z-index:4">
+        <button type="button" class="promo-x" data-promo-close aria-label="닫기"></button>
+        <figure>
+          <img src="img/home/visual-2.jpg" alt="">
+        </figure>
+        <div class="promo-body">
+          <p class="promo-kicker">National Changgeuk Company</p>
+          <h2>국립창극단을 거친 소리</h2>
+          <p class="promo-copy">국립극장 정기공연 〈춘향가〉. 창과 북이 한 호흡으로 만나는 자리에서 판소리의 본령을 지켜 왔습니다.</p>
+          <div class="promo-foot">
+            <button type="button" class="promo-today" data-promo-today>오늘 하루 보지 않기</button>
+            <button type="button" class="promo-close" data-promo-close>닫기</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="promo-card" data-promo="world" style="z-index:3">
+        <button type="button" class="promo-x" data-promo-close aria-label="닫기"></button>
+        <figure>
+          <img src="img/home/visual-3.jpg" alt="">
+        </figure>
+        <div class="promo-body">
+          <p class="promo-kicker">Lincoln Center</p>
+          <h2>링컨센터가 초청한 판소리</h2>
+          <p class="promo-copy">뉴욕 링컨센터, 파리 유네스코, 도쿄 국립극장. 초청받은 무대에서 우리 소리가 세계 관객과 마주했습니다.</p>
+          <div class="promo-foot">
+            <button type="button" class="promo-today" data-promo-today>오늘 하루 보지 않기</button>
+            <button type="button" class="promo-close" data-promo-close>닫기</button>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=24"></script>
 </body>
 </html>

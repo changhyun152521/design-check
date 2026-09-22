@@ -53,6 +53,11 @@
     document.body.classList.toggle("is-entered", name === "upload");
     document.body.classList.toggle("is-home", name === "home");
     document.body.classList.toggle("is-history", name === "history");
+    if (name === "upload") {
+      window.setTimeout(openPromos, 240);
+    } else {
+      hidePromoLayer();
+    }
     if (name === "home") {
       startHome();
       homeView.classList.add("is-shown");
@@ -137,6 +142,102 @@
       transitRunning = false;
       showView("upload");
     }, 400);
+  }
+
+  var promoLayer = document.getElementById("promoLayer");
+  var promoSessionDone = false;
+  var PROMO_STORE = "imkyutae_promo";
+
+  function promoToday() {
+    var d = new Date();
+    return d.getFullYear() + "-" + ("0" + (d.getMonth() + 1)).slice(-2) + "-" + ("0" + d.getDate()).slice(-2);
+  }
+
+  function promoMap() {
+    try {
+      return JSON.parse(localStorage.getItem(PROMO_STORE) || "{}") || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function isPromoHiddenToday(id) {
+    return promoMap()[id] === promoToday();
+  }
+
+  function hidePromoToday(id) {
+    try {
+      var map = promoMap();
+      map[id] = promoToday();
+      localStorage.setItem(PROMO_STORE, JSON.stringify(map));
+    } catch (e) {}
+  }
+
+  function hidePromoLayer() {
+    if (!promoLayer) return;
+    promoLayer.hidden = true;
+    promoLayer.classList.remove("is-on");
+    document.body.classList.remove("promo-on");
+  }
+
+  function syncPromoLayer() {
+    if (!promoLayer) return;
+    var open = promoLayer.querySelectorAll(".promo-card:not([hidden])");
+    if (!open.length) {
+      promoSessionDone = true;
+      hidePromoLayer();
+    }
+  }
+
+  function closePromoCard(card, remember) {
+    if (!card) return;
+    var id = card.getAttribute("data-promo");
+    if (remember && id) hidePromoToday(id);
+    card.hidden = true;
+    syncPromoLayer();
+  }
+
+  function openPromos() {
+    if (!promoLayer || promoSessionDone) return;
+    var cards = promoLayer.querySelectorAll(".promo-card");
+    var shown = 0;
+    cards.forEach(function (card) {
+      var id = card.getAttribute("data-promo");
+      if (isPromoHiddenToday(id)) {
+        card.hidden = true;
+      } else {
+        card.hidden = false;
+        shown += 1;
+      }
+    });
+    if (!shown) {
+      hidePromoLayer();
+      return;
+    }
+    document.body.classList.add("promo-on");
+    promoLayer.hidden = false;
+    promoLayer.classList.remove("is-on");
+    void promoLayer.offsetWidth;
+    promoLayer.classList.add("is-on");
+  }
+
+  if (promoLayer) {
+    promoLayer.addEventListener("click", function (e) {
+      var card = e.target.closest(".promo-card");
+      if (card && !e.target.closest("[data-promo-close], [data-promo-today]")) {
+        promoLayer.querySelectorAll(".promo-card").forEach(function (c) {
+          c.classList.remove("is-front");
+        });
+        card.classList.add("is-front");
+      }
+      var todayBtn = e.target.closest("[data-promo-today]");
+      if (todayBtn) {
+        closePromoCard(todayBtn.closest(".promo-card"), true);
+        return;
+      }
+      var closeBtn = e.target.closest("[data-promo-close]");
+      if (closeBtn) closePromoCard(closeBtn.closest(".promo-card"), false);
+    });
   }
 
   (function startIntro() {
