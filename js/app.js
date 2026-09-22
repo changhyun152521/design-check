@@ -15,6 +15,62 @@
   var stage = document.getElementById("previewStage");
   var iframe = document.getElementById("previewFrame");
   var modeLabel = document.getElementById("modeLabel");
+  var intro = document.getElementById("intro");
+  var introDone = false;
+
+  function finishIntro() {
+    if (introDone) return;
+    introDone = true;
+    try { sessionStorage.setItem("im-intro", "1"); } catch (e) {}
+    document.body.classList.remove("intro-on");
+    document.body.classList.add("is-entered");
+    if (!intro) return;
+    intro.classList.add("is-out");
+    window.setTimeout(function () {
+      intro.hidden = true;
+    }, 720);
+  }
+
+  function skipIntroNow() {
+    introDone = true;
+    document.body.classList.remove("intro-on");
+    document.body.classList.add("is-entered");
+    if (intro) intro.hidden = true;
+  }
+
+  (function startIntro() {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var seen = false;
+    try { seen = sessionStorage.getItem("im-intro") === "1"; } catch (e) {}
+    if (!intro || reduce || seen) {
+      skipIntroNow();
+      return;
+    }
+    var timer = window.setTimeout(finishIntro, 2480);
+    var armed = false;
+    window.setTimeout(function () { armed = true; }, 380);
+    function onSkip() {
+      if (!armed) return;
+      window.clearTimeout(timer);
+      finishIntro();
+    }
+    intro.addEventListener("click", onSkip);
+    var skipBtn = document.getElementById("introSkip");
+    if (skipBtn) {
+      skipBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        window.clearTimeout(timer);
+        finishIntro();
+      });
+    }
+    document.addEventListener("keydown", function onKey(e) {
+      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        document.removeEventListener("keydown", onKey);
+        onSkip();
+      }
+    });
+  })();
 
   function revokeAll() {
     objectUrls.forEach(function (u) {
