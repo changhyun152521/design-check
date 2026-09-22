@@ -28,8 +28,8 @@
       stage.style.removeProperty("--pc-scale");
       return;
     }
-    var w = stage.clientWidth || 1440;
-    var scale = Math.min(1, w / 1440);
+    var w = stage.clientWidth || 1920;
+    var scale = Math.min(1, w / 1920);
     stage.style.setProperty("--pc-scale", String(scale));
   }
 

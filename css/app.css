@@ -250,9 +250,9 @@ figcaption button:hover { color: var(--c); }
 }
 .preview-stage.is-pc { overflow: hidden; align-items: flex-start; }
 .preview-stage.is-pc .phone {
-  flex: 0 0 1440px;
-  width: 1440px;
-  min-width: 1440px;
+  flex: 0 0 1920px;
+  width: 1920px;
+  min-width: 1920px;
   height: calc((100dvh - 52px) / var(--pc-scale, 1));
   transform: scale(var(--pc-scale, 1));
   transform-origin: top center;
@@ -262,6 +262,7 @@ figcaption button:hover { color: var(--c); }
   padding: 16px 12px;
 }
 .preview-stage.is-mobile .phone {
+  box-sizing: content-box;
   width: 390px;
   max-width: 100%;
   height: 100%;
