@@ -21,7 +21,6 @@
   function finishIntro() {
     if (introDone) return;
     introDone = true;
-    try { sessionStorage.setItem("im-intro", "1"); } catch (e) {}
     document.body.classList.remove("intro-on");
     document.body.classList.add("is-entered");
     if (!intro) return;
@@ -40,9 +39,7 @@
 
   (function startIntro() {
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var seen = false;
-    try { seen = sessionStorage.getItem("im-intro") === "1"; } catch (e) {}
-    if (!intro || reduce || seen) {
+    if (!intro || reduce) {
       skipIntroNow();
       return;
     }
