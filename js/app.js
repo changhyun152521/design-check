@@ -56,8 +56,15 @@
     var drop = input.closest(".drop");
     var img = drop.querySelector("img.preview");
     var fallback = drop.querySelector("img.preview-default");
+    var shot = drop.closest(".shot");
     var nameEl = drop.parentElement.querySelector("[data-filename]");
     var clearBtn = drop.parentElement.querySelector("[data-clear]");
+    var dragDepth = 0;
+
+    function markFile(on) {
+      drop.classList.toggle("has-file", on);
+      if (shot) shot.classList.toggle("has-file", on);
+    }
 
     function setRatio(image) {
       if (!image || !image.naturalWidth || !image.naturalHeight) return;
@@ -79,7 +86,7 @@
       banners[key] = url;
       img.onload = function () { setRatio(img); };
       img.src = url;
-      drop.classList.add("has-file");
+      markFile(true);
       if (nameEl) nameEl.textContent = file.name;
     }
 
@@ -87,15 +94,21 @@
       if (input.files && input.files[0]) applyFile(input.files[0]);
     });
 
-    drop.addEventListener("dragover", function (e) {
+    drop.addEventListener("dragenter", function (e) {
       e.preventDefault();
+      dragDepth += 1;
       drop.classList.add("is-drag");
     });
+    drop.addEventListener("dragover", function (e) {
+      e.preventDefault();
+    });
     drop.addEventListener("dragleave", function () {
-      drop.classList.remove("is-drag");
+      dragDepth = Math.max(0, dragDepth - 1);
+      if (!dragDepth) drop.classList.remove("is-drag");
     });
     drop.addEventListener("drop", function (e) {
       e.preventDefault();
+      dragDepth = 0;
       drop.classList.remove("is-drag");
       var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
       applyFile(file);
@@ -108,10 +121,10 @@
         banners[key] = "";
         input.value = "";
         img.removeAttribute("src");
-        drop.classList.remove("has-file");
+        markFile(false);
         resetRatio();
         if (fallback) setRatio(fallback);
-        if (nameEl) nameEl.textContent = "기본 이미지";
+        if (nameEl) nameEl.textContent = "";
       });
     }
   }
