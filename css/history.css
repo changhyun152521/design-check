@@ -1,8 +1,89 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
 
+.hx-hero {
+  position: relative;
+  height: 52vh;
+  min-height: 320px;
+  overflow: hidden;
+  background: #070707;
+}
+.hx-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 28% 40%;
+}
+.hx-hero-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,7,7,.18) 0%, rgba(7,7,7,.22) 42%, rgba(12,12,12,.92) 100%),
+    linear-gradient(90deg, transparent 0%, rgba(7,7,7,.35) 100%);
+}
+.hx-hero-text {
+  position: absolute;
+  left: 8.5%;
+  bottom: 48px;
+  color: #f6f1e8;
+}
+.hx-hero-text p {
+  margin: 0 0 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(232,220,198,.62);
+}
+.hx-hero-text h2 {
+  margin: 0;
+  font-family: "Noto Serif KR", "Noto Sans KR", serif;
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+}
+.hx-hero-text i {
+  display: block;
+  width: 42px;
+  height: 1px;
+  margin-top: 18px;
+  background: #c4a574;
+}
+.hx-cta {
+  background: #111;
+  color: #f6f1e8;
+  text-align: center;
+  padding: 72px 24px 88px;
+}
+.hx-cta p {
+  margin: 0 0 22px;
+  font-size: 15px;
+  letter-spacing: -0.02em;
+  color: rgba(246,241,232,.7);
+}
+.hx-cta button {
+  height: 52px;
+  padding: 0 28px;
+  border: 1px solid rgba(232,220,198,.55);
+  background: transparent;
+  color: #f6f1e8;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+}
+.hx-cta button:hover {
+  background: rgba(246,241,232,.1);
+  border-color: #f6f1e8;
+}
+@media (max-width: 860px) {
+  .hx-hero { height: 42vh; min-height: 260px; }
+  .hx-hero-text { left: 24px; bottom: 32px; }
+}
+
 .hx {
   background: #fff;
-  border-top: 1px solid #e8e8e8;
+  border-top: 0;
 }
 
 #history1008 {

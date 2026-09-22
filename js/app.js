@@ -9,20 +9,30 @@
   var device = "pc";
   var previewOpen = false;
   var useUploaded = true;
+  var currentView = "intro";
 
   var uploadView = document.getElementById("uploadView");
   var previewView = document.getElementById("previewView");
+  var historyView = document.getElementById("historyView");
+  var homeView = document.getElementById("homeView");
   var stage = document.getElementById("previewStage");
   var iframe = document.getElementById("previewFrame");
   var modeLabel = document.getElementById("modeLabel");
   var intro = document.getElementById("intro");
   var introDone = false;
+  var homeStarted = false;
 
-  function finishIntro() {
+  var views = {
+    history: historyView,
+    home: homeView,
+    upload: uploadView,
+    preview: previewView
+  };
+
+  function hideIntro() {
     if (introDone) return;
     introDone = true;
     document.body.classList.remove("intro-on");
-    document.body.classList.add("is-entered");
     if (!intro) return;
     intro.classList.add("is-out");
     window.setTimeout(function () {
@@ -30,44 +40,170 @@
     }, 720);
   }
 
-  function skipIntroNow() {
-    introDone = true;
-    document.body.classList.remove("intro-on");
-    document.body.classList.add("is-entered");
-    if (intro) intro.hidden = true;
+  function revealIntroCta() {
+    if (intro) intro.classList.add("is-ready");
+  }
+
+  function showView(name) {
+    currentView = name;
+    previewOpen = name === "preview";
+    Object.keys(views).forEach(function (key) {
+      if (views[key]) views[key].hidden = key !== name;
+    });
+    document.body.classList.toggle("is-entered", name === "upload");
+    document.body.classList.toggle("is-home", name === "home");
+    document.body.classList.toggle("is-history", name === "history");
+    if (name === "home") startHome();
+    window.scrollTo(0, 0);
+    if (name === "home") {
+      var headEl = document.getElementById("phomeHead");
+      if (headEl) headEl.classList.remove("is-solid", "is-open");
+    }
+  }
+
+  function goHistory() {
+    hideIntro();
+    showView("history");
+  }
+
+  function goHome() {
+    hideIntro();
+    showView("home");
+  }
+
+  function goUpload() {
+    hideIntro();
+    showView("upload");
   }
 
   (function startIntro() {
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (!intro || reduce) {
-      skipIntroNow();
+    if (!intro) {
+      goHistory();
       return;
     }
-    var timer = window.setTimeout(finishIntro, 2480);
-    var armed = false;
-    window.setTimeout(function () { armed = true; }, 380);
-    function onSkip() {
-      if (!armed) return;
-      window.clearTimeout(timer);
-      finishIntro();
-    }
-    intro.addEventListener("click", onSkip);
+    if (reduce) revealIntroCta();
+    else window.setTimeout(revealIntroCta, 2200);
+
     var skipBtn = document.getElementById("introSkip");
     if (skipBtn) {
       skipBtn.addEventListener("click", function (e) {
         e.stopPropagation();
-        window.clearTimeout(timer);
-        finishIntro();
+        revealIntroCta();
       });
     }
-    document.addEventListener("keydown", function onKey(e) {
-      if (e.key === "Escape" || e.key === "Enter" || e.key === " ") {
-        e.preventDefault();
-        document.removeEventListener("keydown", onKey);
-        onSkip();
-      }
-    });
+    var toHistory = document.getElementById("btnToHistory");
+    if (toHistory) toHistory.addEventListener("click", goHistory);
   })();
+
+  var toHome = document.getElementById("btnToHome");
+  if (toHome) toHome.addEventListener("click", goHome);
+
+  document.querySelectorAll("[data-go-upload]").forEach(function (btn) {
+    btn.addEventListener("click", goUpload);
+  });
+
+  function startHome() {
+    if (homeStarted) return;
+    homeStarted = true;
+
+    var slides = document.querySelectorAll(".phome-slide");
+    var pagerBtns = document.querySelectorAll("#phomePager button");
+    var visualIndex = 0;
+    var visualTimer = null;
+    var visualMs = 5000;
+
+    function setVisual(i) {
+      visualIndex = (i + slides.length) % slides.length;
+      slides.forEach(function (slide, idx) {
+        slide.classList.toggle("is-on", idx === visualIndex);
+      });
+      pagerBtns.forEach(function (btn, idx) {
+        btn.classList.toggle("is-on", idx === visualIndex);
+      });
+    }
+    function tickVisual() {
+      setVisual(visualIndex + 1);
+    }
+    function startVisual() {
+      window.clearInterval(visualTimer);
+      visualTimer = window.setInterval(tickVisual, visualMs);
+    }
+    pagerBtns.forEach(function (btn, idx) {
+      btn.addEventListener("click", function () {
+        setVisual(idx);
+        startVisual();
+      });
+    });
+    startVisual();
+
+    var progTexts = [
+      {
+        sub: "정기공연 〈춘향가〉",
+        desc: "국립극장 무대에서 펼치는 임규태 판소리연희단 정기공연입니다. 창과 북이 호흡하는 춘향가를 통해 판소리의 본령을 가까이에서 만나보세요."
+      },
+      {
+        sub: "해외 초청 공연",
+        desc: "뉴욕 링컨센터, 파리 유네스코, 도쿄 국립극장에서 이어온 해외 초청 무대입니다. 우리 판소리가 세계 관객과 호흡하는 현장을 전합니다."
+      },
+      {
+        sub: "전주세계소리축제",
+        desc: "국내 대표 소리 축제의 개막 무대에 오른 연희단의 공연입니다. 창과 고수가 만드는 무대의 호흡을 축제의 현장에서 만나보세요."
+      }
+    ];
+    var track = document.getElementById("progTrack");
+    var figures = track ? track.querySelectorAll("figure") : [];
+    var progIndex = 0;
+    var progSub = document.getElementById("progSub");
+    var progDesc = document.getElementById("progDesc");
+    var progCur = document.getElementById("progCur");
+    var progTotal = document.getElementById("progTotal");
+    if (progTotal) progTotal.textContent = ("0" + figures.length).slice(-2);
+
+    function pad(n) {
+      return ("0" + (n + 1)).slice(-2);
+    }
+    function setProg(i) {
+      if (!figures.length) return;
+      progIndex = (i + figures.length) % figures.length;
+      var w = figures[0].getBoundingClientRect().width;
+      var gap = window.innerWidth <= 992 ? 0 : 40;
+      track.style.transform = "translateX(" + (-progIndex * (w + gap)) + "px)";
+      if (progSub) progSub.textContent = progTexts[progIndex].sub;
+      if (progDesc) progDesc.textContent = progTexts[progIndex].desc;
+      if (progCur) progCur.textContent = pad(progIndex);
+    }
+    var prev = document.getElementById("progPrev");
+    var next = document.getElementById("progNext");
+    if (prev) prev.addEventListener("click", function () { setProg(progIndex - 1); });
+    if (next) next.addEventListener("click", function () { setProg(progIndex + 1); });
+    window.addEventListener("resize", function () { setProg(progIndex); });
+    setProg(0);
+
+    var head = document.getElementById("phomeHead");
+    var burger = document.getElementById("phomeBurger");
+    function onHomeScroll() {
+      if (!head) return;
+      head.classList.toggle("is-solid", homeView.scrollTop > 40 || window.scrollY > 40);
+    }
+    window.addEventListener("scroll", onHomeScroll, { passive: true });
+    if (burger && head) {
+      burger.addEventListener("click", function () {
+        head.classList.toggle("is-open");
+      });
+    }
+    document.querySelectorAll(".phome a[href^='#'], [data-scroll]").forEach(function (el) {
+      el.addEventListener("click", function (e) {
+        var target = el.getAttribute("data-scroll") || el.getAttribute("href");
+        if (!target || target === "#") return;
+        var node = document.querySelector(target);
+        if (!node) return;
+        e.preventDefault();
+        node.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (head) head.classList.remove("is-open");
+      });
+    });
+  }
 
   function revokeAll() {
     objectUrls.forEach(function (u) {
@@ -197,19 +333,15 @@
   }
 
   function openPreview() {
-    previewOpen = true;
-    uploadView.hidden = true;
-    previewView.hidden = false;
+    showView("preview");
     setDevice("pc", false);
     iframe.src = "/site/index.html?t=" + Date.now();
     requestAnimationFrame(fitPcScale);
   }
 
   function closePreview() {
-    previewOpen = false;
-    previewView.hidden = true;
-    uploadView.hidden = false;
     iframe.removeAttribute("src");
+    showView("upload");
   }
 
   bindDrop("fileTop", "top");
