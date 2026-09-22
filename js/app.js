@@ -79,9 +79,62 @@
     showView("home");
   }
 
+  var transit = document.getElementById("transit");
+  var transitTimer = null;
+  var transitRunning = false;
+  var TRANSIT_MS = 3800;
+
   function goUpload() {
     hideIntro();
-    showView("upload");
+    playTransitThenUpload();
+  }
+
+  function preloadTransit() {
+    [
+      "img/home/visual-1.jpg",
+      "img/home/visual-2.jpg",
+      "img/home/visual-3.jpg",
+      "img/intro-still.jpg"
+    ].forEach(function (src) {
+      var im = new Image();
+      im.src = src;
+    });
+  }
+
+  function playTransitThenUpload() {
+    if (transitRunning) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || !transit) {
+      showView("upload");
+      return;
+    }
+    transitRunning = true;
+    document.body.classList.add("is-transit");
+    if (intro) intro.hidden = true;
+    transit.hidden = false;
+    transit.classList.remove("is-on", "is-out");
+    void transit.offsetWidth;
+    transit.classList.add("is-on");
+    window.clearTimeout(transitTimer);
+    transitTimer = window.setTimeout(finishTransit, TRANSIT_MS);
+  }
+
+  function finishTransit() {
+    window.clearTimeout(transitTimer);
+    transitTimer = null;
+    if (!transit) {
+      transitRunning = false;
+      showView("upload");
+      return;
+    }
+    transit.classList.add("is-out");
+    window.setTimeout(function () {
+      transit.hidden = true;
+      transit.classList.remove("is-on", "is-out");
+      document.body.classList.remove("is-transit");
+      transitRunning = false;
+      showView("upload");
+    }, 400);
   }
 
   (function startIntro() {
@@ -172,6 +225,7 @@
   function startHome() {
     if (homeStarted) return;
     homeStarted = true;
+    preloadTransit();
 
     var slides = document.querySelectorAll(".phome-slide");
     var pagerBtns = document.querySelectorAll("#phomePager button");
@@ -269,6 +323,17 @@
         if (head) head.classList.remove("is-open");
       });
     });
+
+    var hint = document.getElementById("phomeHint");
+    var finalEl = document.getElementById("homeFinal");
+    if (hint && finalEl && "IntersectionObserver" in window) {
+      var hintIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          hint.classList.toggle("is-hide", entry.isIntersecting);
+        });
+      }, { threshold: 0.45 });
+      hintIo.observe(finalEl);
+    }
   }
 
   function revokeAll() {

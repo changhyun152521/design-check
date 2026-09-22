@@ -24,9 +24,9 @@
   <meta name="twitter:image" content="/og-share.jpg">
   <link rel="preload" as="image" href="img/intro-stage.jpg">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600&display=swap">
-  <link rel="stylesheet" href="css/app.css?v=16">
+  <link rel="stylesheet" href="css/app.css?v=20">
   <link rel="stylesheet" href="css/history.css?v=5">
-  <link rel="stylesheet" href="css/home.css?v=6">
+  <link rel="stylesheet" href="css/home.css?v=9">
 </head>
 <body class="app intro-on">
   <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="임규태 판소리">
@@ -239,10 +239,19 @@
       <div class="phome-wrap phome-prog-inner">
         <div class="phome-prog-left">
           <h2 class="phome-prog-tit">프로그램 소개</h2>
-          <div>
+          <div class="phome-prog-copy">
             <p class="phome-prog-sub" id="progSub">정기공연 〈춘향가〉</p>
             <p class="phome-prog-desc" id="progDesc">국립극장 무대에서 펼치는 임규태 판소리연희단 정기공연입니다. 창과 북이 호흡하는 춘향가를 통해 판소리의 본령을 가까이에서 만나보세요.</p>
             <button type="button" class="phome-more" data-scroll="#homeNews">자세히보기</button>
+          </div>
+          <div class="phome-prog-ctrl">
+            <button type="button" id="progPrev" aria-label="이전">
+              <img src="img/home/ico-arrow.svg" alt="">
+            </button>
+            <div class="phome-frac"><b id="progCur">01</b><i>/</i><span id="progTotal">03</span></div>
+            <button type="button" id="progNext" aria-label="다음">
+              <img src="img/home/ico-arrow.svg" alt="">
+            </button>
           </div>
         </div>
         <div class="phome-prog-right">
@@ -252,13 +261,6 @@
             <figure><img src="img/home/prog-2.jpg" alt=""></figure>
             <figure><img src="img/home/prog-3.jpg" alt=""></figure>
           </div>
-        </div>
-      </div>
-      <div class="phome-wrap">
-        <div class="phome-prog-ctrl">
-          <button type="button" id="progPrev" aria-label="이전">‹</button>
-          <div class="phome-frac"><b id="progCur">01</b> / <span id="progTotal">03</span></div>
-          <button type="button" id="progNext" aria-label="다음">›</button>
         </div>
       </div>
     </section>
@@ -299,39 +301,27 @@
     </section>
 
     <footer class="phome-foot">
-      <div class="phome-wrap">
-        <div class="phome-foot-top">
-          <ul class="phome-foot-menu">
-            <li><a href="#home">이메일 무단 수집 거부</a></li>
-            <li><a href="#home">개인정보처리방침</a></li>
-            <li><a href="#homeIntro">판소리 소개</a></li>
-            <li><a href="#homeNews">공연 안내</a></li>
-          </ul>
-          <ul class="phome-sns">
-            <li><a href="#home"><img src="img/home/sns-ig.svg" alt="인스타그램"></a></li>
-            <li><a href="#home"><img src="img/home/sns-yt.svg" alt="유튜브"></a></li>
-            <li><a href="#home"><img src="img/home/sns-fb.svg" alt="페이스북"></a></li>
-            <li><a href="#home"><img src="img/home/sns-kk.svg" alt="카카오톡"></a></li>
-          </ul>
+      <div class="phome-wrap phome-foot-bot">
+        <div>
+          <h2 class="phome-foot-logo">임규태 판소리</h2>
+          <address>
+            <p>세종특별자치시 한누리대로</p>
+            <p>T. 010-2810-8405</p>
+          </address>
+          <p class="phome-foot-copy">2025 IM KYU-TAE PANSORI. ALL RIGHTS RESERVED</p>
         </div>
-        <div class="phome-foot-bot">
-          <div>
-            <h2 class="phome-foot-logo">임규태 판소리</h2>
-            <address>
-              <p>세종특별자치시 한누리대로</p>
-              <p>T. 010-2810-8405</p>
-            </address>
-            <p class="phome-foot-copy">2025 IM KYU-TAE PANSORI. ALL RIGHTS RESERVED</p>
-          </div>
-          <div>
-            <p class="phome-tel-label">고객센터</p>
-            <a class="phome-tel" href="tel:01028108405">010-2810-8405</a>
-          </div>
+        <div>
+          <p class="phome-tel-label">고객센터</p>
+          <a class="phome-tel" href="tel:01028108405">010-2810-8405</a>
         </div>
       </div>
     </footer>
-    <div class="phome-final">
+    <div class="phome-final" id="homeFinal">
       <button type="button" class="phome-upload" data-go-upload>진짜 진짜 업로드하기</button>
+    </div>
+    <div class="phome-hint" id="phomeHint" aria-hidden="true">
+      <span class="phome-hint-kicker">맨 아래에 있습니다</span>
+      <span class="phome-hint-name">진짜 진짜 업로드하기</span>
     </div>
   </section>
 
@@ -451,6 +441,29 @@
     </div>
   </section>
 
-  <script src="js/app.js?v=19"></script>
+  <div class="transit" id="transit" hidden>
+    <div class="transit-stage" aria-hidden="true">
+      <figure class="transit-shot is-a"><img src="img/home/visual-1.jpg" alt=""></figure>
+      <figure class="transit-shot is-b"><img src="img/home/visual-2.jpg" alt=""></figure>
+      <figure class="transit-shot is-c"><img src="img/home/visual-3.jpg" alt=""></figure>
+    </div>
+    <div class="transit-veil" aria-hidden="true"></div>
+    <div class="transit-matte transit-matte-t" aria-hidden="true"></div>
+    <div class="transit-matte transit-matte-b" aria-hidden="true"></div>
+    <div class="transit-frame">
+      <p class="transit-kicker">Pansori</p>
+      <p class="transit-msg" aria-live="polite">업로드 페이지 이동 중</p>
+      <i class="transit-rule" aria-hidden="true"></i>
+      <p class="transit-sub">창과 북이 숨 고르는 사이</p>
+      <figure class="transit-aside" aria-hidden="true">
+        <img src="img/intro-still.jpg" alt="">
+      </figure>
+    </div>
+    <div class="transit-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-label="업로드 페이지 이동 중">
+      <span></span>
+    </div>
+  </div>
+
+  <script src="js/app.js?v=22"></script>
 </body>
 </html>
