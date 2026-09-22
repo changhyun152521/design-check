@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>로그인 | 이창현수학</title>
+    <base href="/site/">
+    <link rel="icon" href="img/common/favicon.svg" type="image/svg+xml">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/sh_common.css">
+    <link rel="stylesheet" href="css/sh_sub.css">
+    <link rel="stylesheet" href="css/mc-auth.css">
+</head>
+<body data-page="login">
+<div id="sh_wrapper" style="background-image:url(img/sub/head_sub_bg.png);background-repeat:no-repeat;background-position-x:center;">
+    <div id="mc-inject-header"></div>
+    <div id="sh_container" class="mc-auth-page">
+        <div id="sh_container_wrapper">
+            <div id="sh_content">
+                <div class="mc-auth">
+                    <div class="mc-auth-shell">
+                        <aside class="mc-auth-brand">
+                            <div>
+                                <div class="eyebrow">Math Chang</div>
+                                <h2><span>이창현</span>수학<br> 학습관리 시스템</h2>
+                                <p>복습영상 · 온라인 강의 · 학습 관리<br>학생과 학부모가 함께 확인하는 학습 공간입니다.</p>
+                            </div>
+                            <div class="brand-foot">중·고등 수학 맞춤 수업</div>
+                        </aside>
+                        <div class="mc-auth-panel">
+                            <div class="mc-auth-tabs">
+                                <span class="is-active">로그인</span>
+                                <a href="register.html">회원가입</a>
+                            </div>
+                            <h1 class="mc-auth-title">로그인</h1>
+                            <p class="mc-auth-desc">아이디와 비밀번호를 입력해 주세요.</p>
+                            <form action="login.html" method="post" onsubmit="return false;">
+                                <div class="mc-field">
+                                    <label for="login_id">아이디 <span class="req">*</span></label>
+                                    <input type="text" id="login_id" class="frm_input required" maxlength="20" placeholder="아이디">
+                                </div>
+                                <div class="mc-field">
+                                    <label for="login_pw">비밀번호 <span class="req">*</span></label>
+                                    <input type="password" id="login_pw" class="frm_input required" maxlength="20" placeholder="비밀번호">
+                                </div>
+                                <div class="mc-auth-meta">
+                                    <div class="chk_box">
+                                        <input type="checkbox" id="login_auto_login">
+                                        <label for="login_auto_login">자동 로그인</label>
+                                    </div>
+                                    <a href="login.html">아이디/비밀번호 찾기</a>
+                                </div>
+                                <button type="submit" class="mc-btn mc-btn-primary">로그인</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mc-inject-footer"></div>
+</div>
+<script src="js/chrome.js"></script>
+<script src="js/topmenu_script.js"></script>
+<script src="js/banner-apply.js"></script>
+</body>
+</html>

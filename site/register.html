@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>회원가입 | 이창현수학</title>
+    <base href="/site/">
+    <link rel="icon" href="img/common/favicon.svg" type="image/svg+xml">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/sh_common.css">
+    <link rel="stylesheet" href="css/sh_sub.css">
+    <link rel="stylesheet" href="css/mc-auth.css">
+</head>
+<body data-page="register">
+<div id="sh_wrapper" style="background-image:url(img/sub/head_sub_bg.png);background-repeat:no-repeat;background-position-x:center;">
+    <div id="mc-inject-header"></div>
+    <div id="sh_container" class="mc-auth-page">
+        <div id="sh_container_wrapper">
+            <div id="sh_content">
+                <div class="mc-register-wrap">
+                    <div class="mc-register-card">
+                        <div class="mc-auth-tabs" style="margin-bottom:24px;">
+                            <a href="login.html">로그인</a>
+                            <span class="is-active">회원가입</span>
+                        </div>
+                        <h1 class="mc-auth-title">회원가입</h1>
+                        <p class="mc-auth-desc">회원 유형을 선택한 뒤, 약관에 동의해 주세요.</p>
+                        <form action="register.html" method="post" onsubmit="return false;">
+                            <div class="mc-type-switch" role="radiogroup" aria-label="회원 유형">
+                                <label class="mc-type-card is-active">
+                                    <input type="radio" name="mb_1" value="student" checked>
+                                    <strong>학생 회원</strong>
+                                    <span>강의·복습·학습 통계를 확인하는 학생용 계정입니다.</span>
+                                </label>
+                                <label class="mc-type-card">
+                                    <input type="radio" name="mb_1" value="parent">
+                                    <strong>학부모 회원</strong>
+                                    <span>자녀 학습 현황과 월별 통계를 함께 확인하는 학부모용 계정입니다.</span>
+                                </label>
+                            </div>
+                            <div id="mc_parent_step1_guide" class="mc-parent-notice" style="display:none;margin-bottom:18px">
+                                <strong>학부모 가입 안내</strong><br>
+                                자녀 학생 아이디로 연동을 요청하며, <strong>관리자 승인 후</strong> 학부모교실·자녀 현황 확인이 가능합니다.
+                            </div>
+                            <section class="mc-agree-box">
+                                <div class="mc-agree-head">
+                                    <h3>(필수) 서비스 이용 약관</h3>
+                                    <label class="mc-agree-check"><input type="checkbox" value="1"><span>동의합니다</span></label>
+                                </div>
+                                <div class="mc-agree-body">
+                                    <h4>제1조 (목적)</h4>
+                                    <p>본 약관은 이창현수학(이하 "회사")이 제공하는 온라인 수학 강의 및 학습 관리 서비스의 이용과 관련하여 회사와 이용자 간의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다.</p>
+                                </div>
+                            </section>
+                            <section class="mc-agree-box">
+                                <div class="mc-agree-head">
+                                    <h3>(필수) 개인정보 수집 및 이용</h3>
+                                    <label class="mc-agree-check"><input type="checkbox" value="1"><span>동의합니다</span></label>
+                                </div>
+                                <div class="mc-agree-body">
+                                    <p>회사는 회원가입, 서비스 제공, 학습 관리를 위해 이름, 아이디, 비밀번호, 연락처를 수집·이용합니다.</p>
+                                </div>
+                            </section>
+                            <button type="submit" class="mc-btn mc-btn-primary">다음</button>
+                        </form>
+                    </div>
+                </div>
+                <script>
+                (function(){
+                  document.querySelectorAll('.mc-type-card').forEach(function(card){
+                    card.addEventListener('click', function(){
+                      document.querySelectorAll('.mc-type-card').forEach(function(c){ c.classList.remove('is-active'); });
+                      card.classList.add('is-active');
+                      var guide=document.getElementById('mc_parent_step1_guide');
+                      if(guide) guide.style.display = card.querySelector('input').value==='parent' ? '' : 'none';
+                    });
+                  });
+                })();
+                </script>
+            </div>
+        </div>
+    </div>
+    <div id="mc-inject-footer"></div>
+</div>
+<script src="js/chrome.js"></script>
+<script src="js/topmenu_script.js"></script>
+<script src="js/banner-apply.js"></script>
+</body>
+</html>

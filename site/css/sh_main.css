@@ -104,6 +104,14 @@
 #include01_wrapper .mc_step_item:focus-within .more_btn{
     -webkit-transform:rotate(90deg);-moz-transform:rotate(90deg);-o-transform:rotate(90deg);-ms-transform:rotate(90deg);transform:rotate(90deg)
 }
+#include01_wrapper .mc_step_item:nth-child(1):hover,
+#include01_wrapper .mc_step_item:nth-child(1):focus-within{background-image:url('../img/main/inc01/steps/step01.png')}
+#include01_wrapper .mc_step_item:nth-child(2):hover,
+#include01_wrapper .mc_step_item:nth-child(2):focus-within{background-image:url('../img/main/inc01/steps/step02.png')}
+#include01_wrapper .mc_step_item:nth-child(3):hover,
+#include01_wrapper .mc_step_item:nth-child(3):focus-within{background-image:url('../img/main/inc01/steps/step03.png')}
+#include01_wrapper .mc_step_item:nth-child(4):hover,
+#include01_wrapper .mc_step_item:nth-child(4):focus-within{background-image:url('../img/main/inc01/steps/step04.png')}
 }
 
 /*box_banner2 — edu1023와 동일 504px (STEP 184 + gap 20 + swiper 40+260)*/

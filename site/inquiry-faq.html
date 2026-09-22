@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>이용문의 | 이창현수학</title>
+    <base href="/site/">
+    <link rel="icon" href="img/common/favicon.svg" type="image/svg+xml">
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <link rel="stylesheet" href="css/sh_common.css">
+    <link rel="stylesheet" href="css/sh_sub.css">
+    <link rel="stylesheet" href="css/sh_preview.css">
+    <link rel="stylesheet" href="css/sh_inquiry.css">
+</head>
+<body data-page="inquiry">
+<div id="sh_wrapper" style="background-image:url(img/sub/head_sub_bg.png);background-repeat:no-repeat;background-position-x:center;">
+    <div id="mc-inject-header"></div>
+        <div id="mc-inject-banner"></div>
+    <div id="sh_container" class="mc-preview-wrap mc-inquiry-wrap">
+            <div id="mc-inject-snb"></div>
+        <div id="sh_container_wrapper">
+            <div id="sh_content">
+                <div id="mc_inquiry_page" class="pagecommon">
+                    <div class="mc_pv_head">
+                        <p class="mc_pv_eyebrow">INQUIRY</p>
+                        <h4>이용문의</h4>
+                        <p>수강·학습관리 관련 궁금한 점을 남겨 주세요.</p>
+                    </div>
+                    <nav class="mc_iq_tabs" role="tablist" aria-label="이용문의 메뉴">
+                        <a class="mc_iq_tab" href="inquiry.html" role="tab" aria-selected="false">이용문의</a>
+                        <a class="mc_iq_tab is-on" href="inquiry-faq.html" role="tab" aria-selected="true">FAQ</a>
+                    </nav>
+                    <ul class="mc_iq_faq_list" aria-label="자주 묻는 질문">
+                        <li><button type="button" class="mc_iq_faq_item" data-faq-id="1"><span class="mc_iq_faq_qmark" aria-hidden="true">Q</span><span class="mc_iq_faq_tit">맛보기강좌는 어떻게 수강하나요?</span><span class="mc_iq_faq_more" aria-hidden="true"><i class="fa fa-angle-right"></i></span></button></li>
+                        <li><button type="button" class="mc_iq_faq_item" data-faq-id="2"><span class="mc_iq_faq_qmark" aria-hidden="true">Q</span><span class="mc_iq_faq_tit">중학교·고등학교 수학 모두 수업 가능한가요?</span><span class="mc_iq_faq_more" aria-hidden="true"><i class="fa fa-angle-right"></i></span></button></li>
+                        <li><button type="button" class="mc_iq_faq_item" data-faq-id="3"><span class="mc_iq_faq_qmark" aria-hidden="true">Q</span><span class="mc_iq_faq_tit">학부모도 자녀 학습 현황을 볼 수 있나요?</span><span class="mc_iq_faq_more" aria-hidden="true"><i class="fa fa-angle-right"></i></span></button></li>
+                    </ul>
+                    <div class="mc_iq_modal mc_iq_faq_modal" id="mc_iq_faq_modal" hidden>
+                        <div class="mc_iq_modal_dim" data-close="faq"></div>
+                        <div class="mc_iq_modal_panel is-faq" role="dialog" aria-modal="true" aria-labelledby="mc_iq_faq_modal_title">
+                            <div class="mc_iq_modal_head">
+                                <p class="mc_iq_faq_modal_eyebrow">Q&amp;A</p>
+                                <h2 id="mc_iq_faq_modal_title">FAQ</h2>
+                                <button type="button" class="mc_iq_modal_close" data-close="faq" aria-label="닫기"><i class="fa fa-times" aria-hidden="true"></i></button>
+                            </div>
+                            <div class="mc_iq_modal_body" id="mc_iq_faq_modal_body"></div>
+                        </div>
+                    </div>
+                    <script>
+                    (function(){
+                      var faqs={1:{t:"맛보기강좌는 어떻게 수강하나요?",a:"홈페이지 상단의 내강의실 > 맛보기강좌 메뉴에서 강의 스타일과 수업 분위기를 미리 확인할 수 있습니다."},2:{t:"중학교·고등학교 수학 모두 수업 가능한가요?",a:"중등 수학(선행·내신)부터 고등 수학, 수능 실전까지 모두 수업합니다. 학생 목표에 맞춰 커리큘럼을 구성합니다."},3:{t:"학부모도 자녀 학습 현황을 볼 수 있나요?",a:"학부모교실에서 자녀의 수업 현황, 테스트 현황, 월별 통계를 함께 확인할 수 있습니다."}};
+                      var modal=document.getElementById("mc_iq_faq_modal");
+                      var title=document.getElementById("mc_iq_faq_modal_title");
+                      var body=document.getElementById("mc_iq_faq_modal_body");
+                      if(!modal) return;
+                      function openFaq(id){var f=faqs[id]; if(!f) return; title.textContent=f.t; body.innerHTML='<article class="mc_iq_faq_view"><div class="mc_iq_faq_view_block is-q"><span class="mc_iq_faq_view_label">질문</span><div class="mc_iq_faq_view_text">'+f.t+'</div></div><div class="mc_iq_faq_view_block is-a"><span class="mc_iq_faq_view_label">답변</span><div class="mc_iq_faq_view_text">'+f.a+'</div></div></article>'; modal.hidden=false; document.body.classList.add("mc-iq-modal-open");}
+                      function closeFaq(){modal.hidden=true; document.body.classList.remove("mc-iq-modal-open");}
+                      document.querySelectorAll(".mc_iq_faq_item").forEach(function(btn){btn.addEventListener("click",function(){openFaq(btn.getAttribute("data-faq-id"));});});
+                      modal.querySelectorAll("[data-close]").forEach(function(el){el.addEventListener("click",closeFaq);});
+                      document.addEventListener("keydown",function(e){if(e.key==="Escape"&&!modal.hidden) closeFaq();});
+                    })();
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mc-inject-footer"></div>
+</div>
+<script src="js/chrome.js"></script>
+<script src="js/topmenu_script.js"></script>
+<script src="js/banner-apply.js"></script>
+</body>
+</html>

@@ -52,10 +52,12 @@
   document.addEventListener("click", function (e) {
     var a = e.target.closest("a");
     if (!a) return;
-    var href = a.getAttribute("href") || "";
+    var href = (a.getAttribute("href") || "").trim();
     if (a.target === "_blank") return;
     if (/^(tel:|mailto:|https?:)/i.test(href)) return;
-    e.preventDefault();
+    if (href === "" || href === "#" || href.indexOf("#bookmark") === 0) {
+      e.preventDefault();
+    }
   });
 
   function notifyReady() {
