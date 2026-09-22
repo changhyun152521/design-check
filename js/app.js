@@ -74,14 +74,14 @@
 
     drop.addEventListener("dragover", function (e) {
       e.preventDefault();
-      drop.style.borderColor = "#fe7013";
+      drop.classList.add("is-drag");
     });
     drop.addEventListener("dragleave", function () {
-      drop.style.borderColor = "";
+      drop.classList.remove("is-drag");
     });
     drop.addEventListener("drop", function (e) {
       e.preventDefault();
-      drop.style.borderColor = "";
+      drop.classList.remove("is-drag");
       var file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
       applyFile(file);
     });
