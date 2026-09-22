@@ -1,0 +1,164 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap");
+
+.hx {
+  background: #fff;
+  border-top: 1px solid #e8e8e8;
+}
+
+#history1008 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: min(1100px, calc(100% - 80px));
+  margin: 0 auto;
+  padding: 88px 0 100px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #777;
+}
+
+#history1008 * { word-break: keep-all; }
+
+#history1008 .tit {
+  width: 34%;
+  padding-right: 48px;
+  position: sticky;
+  top: 80px;
+}
+
+#history1008 .tit span {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #fe7013;
+}
+
+#history1008 .tit p {
+  margin: 18px 0 28px;
+  font-size: 34px;
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: -0.04em;
+  color: #111;
+  white-space: pre-line;
+}
+
+#history1008 .tit p b { font-weight: 700; }
+
+#history1008 .tit > div {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.75;
+  color: #777;
+  white-space: pre-line;
+}
+
+#history1008 .cont {
+  position: relative;
+  width: 62%;
+}
+
+#history1008 .cont::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 137px;
+  width: 1px;
+  height: 100%;
+  background: #e1e1e1;
+}
+
+#history1008 .cont > div {
+  display: flex;
+  padding: 30px 40px;
+}
+
+#history1008 .cont > div:nth-child(even) {
+  border-top: 1px solid #e1e1e1;
+  border-bottom: 1px solid #e1e1e1;
+  background: #f4f4f2;
+}
+
+#history1008 .cont p {
+  position: relative;
+  width: 100px;
+  margin: 0 40px 0 0;
+  flex-shrink: 0;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+
+#history1008 .cont p::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 11px;
+  right: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #fe7013;
+}
+
+#history1008 .cont > div:first-child p { color: #fe7013; }
+
+#history1008 .cont ul {
+  margin: 2px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+#history1008 .cont li {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+}
+
+#history1008 .cont li + li { margin-top: 6px; }
+
+@media (max-width: 860px) {
+  #history1008 {
+    display: block;
+    width: calc(100% - 40px);
+    padding: 56px 0 72px;
+  }
+  #history1008 .tit {
+    width: auto;
+    padding: 0;
+    position: static;
+    text-align: center;
+  }
+  #history1008 .tit p {
+    margin: 10px 0 16px;
+    font-size: 28px;
+  }
+  #history1008 .cont {
+    width: 100%;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  #history1008 { width: calc(100% - 32px); padding: 48px 0 64px; }
+  #history1008 .tit p { font-size: 24px; }
+  #history1008 .tit > div { font-size: 14px; }
+  #history1008 .cont p { font-size: 22px; }
+  #history1008 .cont > div { padding: 24px 22px; }
+  #history1008 .cont::after { left: 118px; }
+  #history1008 .cont li { font-size: 14px; }
+}
+
+@media (max-width: 380px) {
+  #history1008 .cont > div { display: block; }
+  #history1008 .cont p {
+    display: inline-block;
+    width: auto;
+    margin: 0 0 10px;
+  }
+  #history1008 .cont p::after,
+  #history1008 .cont::after { display: none; }
+}
