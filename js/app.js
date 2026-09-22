@@ -55,14 +55,29 @@
     var input = document.getElementById(inputId);
     var drop = input.closest(".drop");
     var img = drop.querySelector("img.preview");
+    var fallback = drop.querySelector("img.preview-default");
     var nameEl = drop.parentElement.querySelector("[data-filename]");
     var clearBtn = drop.parentElement.querySelector("[data-clear]");
+
+    function setRatio(image) {
+      if (!image || !image.naturalWidth || !image.naturalHeight) return;
+      drop.style.setProperty("--ratio", image.naturalWidth + " / " + image.naturalHeight);
+    }
+    function resetRatio() {
+      var ratio = drop.getAttribute("data-ratio");
+      if (ratio) drop.style.setProperty("--ratio", ratio);
+    }
+    if (fallback) {
+      if (fallback.complete) setRatio(fallback);
+      else fallback.addEventListener("load", function () { setRatio(fallback); });
+    }
 
     function applyFile(file) {
       if (!file || !file.type || file.type.indexOf("image/") !== 0) return;
       var url = URL.createObjectURL(file);
       objectUrls.push(url);
       banners[key] = url;
+      img.onload = function () { setRatio(img); };
       img.src = url;
       drop.classList.add("has-file");
       if (nameEl) nameEl.textContent = file.name;
@@ -94,7 +109,9 @@
         input.value = "";
         img.removeAttribute("src");
         drop.classList.remove("has-file");
-        if (nameEl) nameEl.textContent = "기본 이미지가 유지됩니다";
+        resetRatio();
+        if (fallback) setRatio(fallback);
+        if (nameEl) nameEl.textContent = "기본 이미지";
       });
     }
   }

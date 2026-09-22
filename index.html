@@ -9,91 +9,125 @@
   <meta property="og:title" content="임규태 확인용">
   <meta property="og:description" content="배너 사진을 올리고 홈페이지에 적용해 미리 확인합니다.">
   <meta property="og:image" content="site/img/common/og-share.png">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/app.css">
 </head>
 <body class="app">
   <section class="app-upload" id="uploadView">
-    <header class="topbar">
-      <div class="topbar-inner">
-        <a class="brand" href="./">임규태 확인용</a>
-        <div class="btn-row">
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="./">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <strong>임규태 확인용</strong>
+            <em>Banner Preview</em>
+          </span>
+        </a>
+        <nav class="header-actions">
           <button type="button" class="btn" id="btnPreviewDefault">기본 미리보기</button>
           <button type="button" class="btn btn-primary" id="btnPreview">적용 · 미리보기</button>
-        </div>
+        </nav>
       </div>
     </header>
 
-    <main class="studio">
-      <p class="lead">홈페이지에 실제로 보이는 비율입니다. 올리지 않은 칸은 기본 이미지가 유지됩니다.</p>
+    <section class="intro">
+      <div class="wrap">
+        <p class="eyebrow">Upload</p>
+        <h1>배너 사진을 올려 주세요</h1>
+        <p class="intro-text">사진은 원본 비율 그대로 보입니다. 칸 안에 파일을 끌어다 놓거나 클릭해서 선택할 수 있습니다.</p>
+      </div>
+    </section>
 
-      <article class="slot">
-        <div class="slot-head">
-          <h2>상단 배너</h2>
-          <span>PC 히어로 1200 × 604</span>
-        </div>
-        <label class="drop" style="--ratio:1200/604">
-          <input id="fileTop" type="file" accept="image/*">
-          <img class="preview-default" src="site/img/common/head_bg.png" alt="">
-          <img class="preview" alt="">
-          <div class="drop-empty"><span>사진 올리기</span></div>
-        </label>
-        <div class="drop-meta">
-          <span data-filename>기본 이미지</span>
-          <button type="button" data-clear>기본으로</button>
-        </div>
-      </article>
-
-      <article class="slot">
-        <div class="slot-head">
-          <h2>학습 시스템 배너</h2>
-          <span>PC 전체 가로 × 460</span>
-        </div>
-        <label class="drop" style="--ratio:1440/460">
-          <input id="fileSystem" type="file" accept="image/*">
-          <img class="preview-default" src="site/img/main/inc02/in02_bg.png" alt="">
-          <img class="preview" alt="">
-          <div class="drop-empty"><span>사진 올리기</span></div>
-        </label>
-        <div class="drop-meta">
-          <span data-filename>기본 이미지</span>
-          <button type="button" data-clear>기본으로</button>
-        </div>
-      </article>
-
-      <div class="slot-pair">
-        <article class="slot">
-          <div class="slot-head">
-            <h2>슬라이드 1</h2>
-            <span>860 × 260</span>
-          </div>
-          <label class="drop" style="--ratio:857/260">
-            <input id="fileSlide1" type="file" accept="image/*">
-            <img class="preview-default" src="site/img/main/inc01/banner01.png" alt="">
-            <img class="preview" alt="">
-            <div class="drop-empty"><span>사진 올리기</span></div>
+    <main class="board">
+      <div class="wrap">
+        <article class="panel">
+          <header class="panel-head">
+            <h2>상단 배너</h2>
+            <span>원본 2000 × 773</span>
+          </header>
+          <label class="drop" data-ratio="2000 / 773" style="--ratio:2000 / 773">
+            <input id="fileTop" type="file" accept="image/*">
+            <span class="drop-frame">
+              <img class="preview-default" src="site/img/common/head_bg.png" alt="상단 배너 기본 이미지">
+              <img class="preview" alt="">
+            </span>
+            <span class="drop-hint">
+              <i aria-hidden="true"></i>
+              <strong>사진을 끌어다 놓거나 클릭하세요</strong>
+            </span>
           </label>
           <div class="drop-meta">
             <span data-filename>기본 이미지</span>
             <button type="button" data-clear>기본으로</button>
           </div>
         </article>
-        <article class="slot">
-          <div class="slot-head">
-            <h2>슬라이드 2</h2>
-            <span>860 × 260</span>
-          </div>
-          <label class="drop" style="--ratio:857/260">
-            <input id="fileSlide2" type="file" accept="image/*">
-            <img class="preview-default" src="site/img/main/inc01/banner03.png" alt="">
-            <img class="preview" alt="">
-            <div class="drop-empty"><span>사진 올리기</span></div>
+
+        <article class="panel">
+          <header class="panel-head">
+            <h2>학습 시스템 배너</h2>
+            <span>원본 2000 × 1130</span>
+          </header>
+          <label class="drop" data-ratio="2000 / 1130" style="--ratio:2000 / 1130">
+            <input id="fileSystem" type="file" accept="image/*">
+            <span class="drop-frame">
+              <img class="preview-default" src="site/img/main/inc02/in02_bg.png" alt="학습 시스템 배너 기본 이미지">
+              <img class="preview" alt="">
+            </span>
+            <span class="drop-hint">
+              <i aria-hidden="true"></i>
+              <strong>사진을 끌어다 놓거나 클릭하세요</strong>
+            </span>
           </label>
           <div class="drop-meta">
             <span data-filename>기본 이미지</span>
             <button type="button" data-clear>기본으로</button>
           </div>
         </article>
+
+        <div class="panel-row">
+          <article class="panel">
+            <header class="panel-head">
+              <h2>슬라이드 1</h2>
+              <span>원본 845 × 273</span>
+            </header>
+            <label class="drop" data-ratio="845 / 273" style="--ratio:845 / 273">
+              <input id="fileSlide1" type="file" accept="image/*">
+              <span class="drop-frame">
+                <img class="preview-default" src="site/img/main/inc01/banner01.png" alt="슬라이드 1 기본 이미지">
+                <img class="preview" alt="">
+              </span>
+              <span class="drop-hint">
+                <i aria-hidden="true"></i>
+                <strong>끌어다 놓거나 클릭</strong>
+              </span>
+            </label>
+            <div class="drop-meta">
+              <span data-filename>기본 이미지</span>
+              <button type="button" data-clear>기본으로</button>
+            </div>
+          </article>
+          <article class="panel">
+            <header class="panel-head">
+              <h2>슬라이드 2</h2>
+              <span>원본 845 × 273</span>
+            </header>
+            <label class="drop" data-ratio="845 / 273" style="--ratio:845 / 273">
+              <input id="fileSlide2" type="file" accept="image/*">
+              <span class="drop-frame">
+                <img class="preview-default" src="site/img/main/inc01/banner03.png" alt="슬라이드 2 기본 이미지">
+                <img class="preview" alt="">
+              </span>
+              <span class="drop-hint">
+                <i aria-hidden="true"></i>
+                <strong>끌어다 놓거나 클릭</strong>
+              </span>
+            </label>
+            <div class="drop-meta">
+              <span data-filename>기본 이미지</span>
+              <button type="button" data-clear>기본으로</button>
+            </div>
+          </article>
+        </div>
       </div>
     </main>
   </section>
