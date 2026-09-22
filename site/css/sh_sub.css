@@ -1,14 +1,33 @@
 @charset "utf-8";
 
 /* =========================== SUB */
-#sub_main_banner{position:relative;height:250px;text-align:center}
+#sub_main_banner{position:relative;z-index:1;height:250px;text-align:center}
+
+/* PC: 상단 배너는 헤더+250px에서 끝. 본문까지 깔리지 않음 */
+@media (min-width:1025px){
+#sh_wrapper{position:relative;background-color:#fff;background-image:none !important}
+#sh_wrapper:before{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:370px; /* hd_gnb 38 + top_nav 82 + banner 250 */
+    background-image:var(--mc-sub-banner-bg, url(../img/sub/head_sub_bg.png));
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    pointer-events:none;
+    z-index:0;
+}
+#sh_container{background:#fff}
+}
+
 #sh_content_tit_wrap{position:absolute;top:63px;left:50%;transform: translateX(-50%); margin-top:-30px;text-align:center;opacity:0;font-family:'Noto Sans KR';font-weight:400}
 #sh_content_tit_wrap h3{padding-bottom:10px;font-size:38px;color:#fff;font-family:'Noto Sans KR';font-weight:700}
 #sh_content_tit_wrap span{font-size:13px;color:#bebebe}
 
 /* 반응형 [s] */
 @media (max-width:1024px){
-#sub_main_banner{height:350px;background:url(../img/sub/head_sub_bg.png)no-repeat center / cover;}
+#sub_main_banner{height:350px;background:var(--mc-sub-banner-bg, url(../img/sub/head_sub_bg.png)) no-repeat center / cover;}
 #sh_content_tit_wrap{top:50%;transform: translate(-50%, -50%);margin-top:0px !important;opacity: 1 !important;}
 #sh_content_tit_wrap h3{font-size:32px;}
 #sh_content_tit_wrap span{font-size:15px;}

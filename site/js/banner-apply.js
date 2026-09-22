@@ -11,7 +11,12 @@
 
     if (banners.top) {
       var topUrl = cssUrl(banners.top);
-      parts.push("#sh_wrapper{background-image:" + topUrl + ";background-repeat:no-repeat;background-position-x:center;--mc-main-banner-bg:" + topUrl + ";}");
+      var isSub = !!(document.getElementById("sub_main_banner") ||
+        (document.getElementById("sh_hd") && document.getElementById("sh_hd").classList.contains("sub")));
+      parts.push("#sh_wrapper{--mc-main-banner-bg:" + topUrl + ";--mc-sub-banner-bg:" + topUrl + ";}");
+      if (!isSub) {
+        parts.push("#sh_wrapper{background-image:" + topUrl + ";background-repeat:no-repeat;background-position-x:center;}");
+      }
       parts.push("@media (max-width:1024px){#main_banner{background:" + topUrl + " no-repeat center / cover !important}}");
     }
     if (banners.system) {
@@ -35,8 +40,16 @@
     if (banners.top) {
       var wrap = document.getElementById("sh_wrapper");
       if (wrap) {
-        wrap.style.backgroundImage = cssUrl(banners.top);
-        wrap.style.setProperty("--mc-main-banner-bg", cssUrl(banners.top));
+        var topUrl = cssUrl(banners.top);
+        var isSub = !!(document.getElementById("sub_main_banner") ||
+          (document.getElementById("sh_hd") && document.getElementById("sh_hd").classList.contains("sub")));
+        wrap.style.setProperty("--mc-main-banner-bg", topUrl);
+        wrap.style.setProperty("--mc-sub-banner-bg", topUrl);
+        if (isSub) {
+          wrap.style.backgroundImage = "none";
+        } else {
+          wrap.style.backgroundImage = topUrl;
+        }
       }
     }
   }

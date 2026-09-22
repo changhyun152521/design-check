@@ -119,6 +119,25 @@
     );
   }
 
+  function siteBgUrl(value) {
+    if (!value || value === "none") return "";
+    return value.replace(/url\(\s*(['"]?)(?!blob:|data:|https?:|\/)([^'")]+)\1\s*\)/gi, function (_, _q, path) {
+      return 'url("/site/' + String(path).replace(/^\.?\//, "") + '")';
+    });
+  }
+
+  var wrap = document.getElementById("sh_wrapper");
+  if (wrap) {
+    var existingBg = wrap.style.backgroundImage;
+    var existingVar = wrap.style.getPropertyValue("--mc-sub-banner-bg");
+    var resolved = siteBgUrl(existingBg) || siteBgUrl(existingVar);
+    if (resolved) wrap.style.setProperty("--mc-sub-banner-bg", resolved);
+    wrap.style.backgroundImage = "none";
+    wrap.style.backgroundRepeat = "";
+    wrap.style.backgroundPosition = "";
+    wrap.style.backgroundPositionX = "";
+  }
+
   var key = document.body.getAttribute("data-page") || "";
   var meta = PAGES[key];
   if (!meta) return;
