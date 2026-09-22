@@ -82,7 +82,7 @@
   var transit = document.getElementById("transit");
   var transitTimer = null;
   var transitRunning = false;
-  var TRANSIT_MS = 3800;
+  var TRANSIT_MS = 10000;
 
   function goUpload() {
     hideIntro();
@@ -93,7 +93,9 @@
     [
       "img/home/visual-1.jpg",
       "img/home/visual-2.jpg",
+      "img/home/prog-1.jpg",
       "img/home/visual-3.jpg",
+      "img/home/banner.jpg",
       "img/intro-still.jpg"
     ].forEach(function (src) {
       var im = new Image();

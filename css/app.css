@@ -211,24 +211,38 @@ body.is-transit { overflow: hidden; }
 }
 .transit-shot.is-a img { object-position: 28% 40%; }
 .transit-shot.is-b img { object-position: 50% 40%; }
-.transit-shot.is-c img { object-position: 62% 45%; }
+.transit-shot.is-c img { object-position: 50% 45%; }
+.transit-shot.is-d img { object-position: 62% 45%; }
+.transit-shot.is-e img { object-position: 50% 42%; }
 .transit.is-on .transit-shot.is-a {
-  animation: transitA 3.8s linear both;
+  animation: transitA 10s linear both;
 }
 .transit.is-on .transit-shot.is-b {
-  animation: transitB 3.8s linear both;
+  animation: transitB 10s linear both;
 }
 .transit.is-on .transit-shot.is-c {
-  animation: transitC 3.8s linear both;
+  animation: transitC 10s linear both;
+}
+.transit.is-on .transit-shot.is-d {
+  animation: transitD 10s linear both;
+}
+.transit.is-on .transit-shot.is-e {
+  animation: transitE 10s linear both;
 }
 .transit.is-on .transit-shot.is-a img {
-  animation: transitKenA 3.8s ease-out both;
+  animation: transitKenA 10s ease-out both;
 }
 .transit.is-on .transit-shot.is-b img {
-  animation: transitKenB 3.8s ease-out both;
+  animation: transitKenB 10s ease-out both;
 }
 .transit.is-on .transit-shot.is-c img {
-  animation: transitKenC 3.8s ease-out both;
+  animation: transitKenC 10s ease-out both;
+}
+.transit.is-on .transit-shot.is-d img {
+  animation: transitKenD 10s ease-out both;
+}
+.transit.is-on .transit-shot.is-e img {
+  animation: transitKenE 10s ease-out both;
 }
 .transit-veil {
   position: absolute;
@@ -315,37 +329,55 @@ body.is-transit { overflow: hidden; }
   background: #e8dcc6;
 }
 .transit.is-on .transit-progress span {
-  animation: transitBar 3.8s linear forwards;
+  animation: transitBar 10s linear forwards;
 }
 
 @keyframes transitA {
-  0%, 30% { opacity: 1; }
-  40% { opacity: 0; }
-  100% { opacity: 0; }
+  0%, 13% { opacity: 1; }
+  20%, 100% { opacity: 0; }
 }
 @keyframes transitB {
-  0%, 28% { opacity: 0; }
-  38% { opacity: 1; }
-  60% { opacity: 1; }
-  72% { opacity: 0; }
-  100% { opacity: 0; }
+  0%, 13% { opacity: 0; }
+  20% { opacity: 1; }
+  33% { opacity: 1; }
+  40%, 100% { opacity: 0; }
 }
 @keyframes transitC {
-  0%, 58% { opacity: 0; }
-  70% { opacity: 1; }
+  0%, 33% { opacity: 0; }
+  40% { opacity: 1; }
+  53% { opacity: 1; }
+  60%, 100% { opacity: 0; }
+}
+@keyframes transitD {
+  0%, 53% { opacity: 0; }
+  60% { opacity: 1; }
+  73% { opacity: 1; }
+  80%, 100% { opacity: 0; }
+}
+@keyframes transitE {
+  0%, 73% { opacity: 0; }
+  80% { opacity: 1; }
   100% { opacity: 1; }
 }
 @keyframes transitKenA {
-  from { transform: scale(1.14); }
+  from { transform: scale(1.12); }
   to { transform: scale(1.02); }
 }
 @keyframes transitKenB {
-  from { transform: scale(1.04) translate3d(2%, 0, 0); }
-  to { transform: scale(1.12) translate3d(-1.5%, 0, 0); }
+  from { transform: scale(1.04) translate3d(1.5%, 0, 0); }
+  to { transform: scale(1.1) translate3d(-1%, 0, 0); }
 }
 @keyframes transitKenC {
-  from { transform: scale(1.16); }
+  from { transform: scale(1.14); }
   to { transform: scale(1.04); }
+}
+@keyframes transitKenD {
+  from { transform: scale(1.06) translate3d(-1%, 0, 0); }
+  to { transform: scale(1.12) translate3d(1%, 0, 0); }
+}
+@keyframes transitKenE {
+  from { transform: scale(1.12); }
+  to { transform: scale(1.02); }
 }
 @keyframes transitBar {
   from { width: 0; }
