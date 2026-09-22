@@ -53,11 +53,19 @@
     document.body.classList.toggle("is-entered", name === "upload");
     document.body.classList.toggle("is-home", name === "home");
     document.body.classList.toggle("is-history", name === "history");
-    if (name === "home") startHome();
+    if (name === "home") {
+      startHome();
+      homeView.classList.add("is-shown");
+    }
     window.scrollTo(0, 0);
     if (name === "home") {
       var headEl = document.getElementById("phomeHead");
       if (headEl) headEl.classList.remove("is-solid", "is-open");
+      window.setTimeout(function () { setupReveal(homeView); }, 50);
+    }
+    if (name === "history") {
+      historyView.classList.add("is-shown");
+      window.setTimeout(function () { setupReveal(historyView); }, 50);
     }
   }
 
@@ -103,6 +111,64 @@
     btn.addEventListener("click", goUpload);
   });
 
+  function setupReveal(root) {
+    if (!root || root.getAttribute("data-reveal-ready") === "1") return;
+    root.setAttribute("data-reveal-ready", "1");
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var nodes = [];
+    var selectors = [
+      "#history1008 .tit",
+      "#history1008 .cont > div",
+      ".hx-cta",
+      ".phome-sec-tit",
+      ".phome-sec-lead",
+      ".phome-card",
+      ".phome-banner-inner",
+      ".phome-prog-left",
+      ".phome-prog-right",
+      ".phome-news-top",
+      ".phome-news-item",
+      ".phome-foot",
+      ".phome-final"
+    ];
+    selectors.forEach(function (sel) {
+      root.querySelectorAll(sel).forEach(function (el) {
+        el.classList.add("reveal");
+        nodes.push(el);
+      });
+    });
+    root.querySelectorAll("#history1008 .cont > div").forEach(function (el, i) {
+      el.style.transitionDelay = (0.05 * i) + "s";
+    });
+    root.querySelectorAll(".phome-card").forEach(function (el, i) {
+      el.style.transitionDelay = (0.08 * i) + "s";
+    });
+    root.querySelectorAll(".phome-news-item").forEach(function (el, i) {
+      el.style.transitionDelay = (0.07 * i) + "s";
+    });
+    if (reduce || !("IntersectionObserver" in window)) {
+      nodes.forEach(function (el) { el.classList.add("is-in"); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-in");
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    nodes.forEach(function (el) { io.observe(el); });
+    window.requestAnimationFrame(function () {
+      nodes.forEach(function (el) {
+        var box = el.getBoundingClientRect();
+        if (box.top < window.innerHeight * 0.9 && box.bottom > 0) {
+          el.classList.add("is-in");
+          io.unobserve(el);
+        }
+      });
+    });
+  }
+
   function startHome() {
     if (homeStarted) return;
     homeStarted = true;
@@ -140,15 +206,15 @@
     var progTexts = [
       {
         sub: "정기공연 〈춘향가〉",
-        desc: "국립극장 무대에서 펼치는 임규태 판소리연희단 정기공연입니다. 창과 북이 호흡하는 춘향가를 통해 판소리의 본령을 가까이에서 만나보세요."
+        desc: "국립극장 무대에 오르는 임규태 판소리연희단 정기공연입니다. 창과 북이 한 호흡으로 만나는 춘향가의 본령을 가까이에서 확인합니다."
       },
       {
         sub: "해외 초청 공연",
-        desc: "뉴욕 링컨센터, 파리 유네스코, 도쿄 국립극장에서 이어온 해외 초청 무대입니다. 우리 판소리가 세계 관객과 호흡하는 현장을 전합니다."
+        desc: "뉴욕 링컨센터, 파리 유네스코, 도쿄 국립극장. 초청받은 무대에서 우리 판소리가 세계 관객과 마주한 현장을 전합니다."
       },
       {
         sub: "전주세계소리축제",
-        desc: "국내 대표 소리 축제의 개막 무대에 오른 연희단의 공연입니다. 창과 고수가 만드는 무대의 호흡을 축제의 현장에서 만나보세요."
+        desc: "국내 대표 소리 축제의 개막 무대에 선 연희단입니다. 창과 고수가 만드는 호흡을 축제의 한가운데에서 이어 갑니다."
       }
     ];
     var track = document.getElementById("progTrack");

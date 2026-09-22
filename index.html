@@ -25,8 +25,8 @@
   <link rel="preload" as="image" href="img/intro-stage.jpg">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Serif+KR:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="css/app.css?v=16">
-  <link rel="stylesheet" href="css/history.css?v=4">
-  <link rel="stylesheet" href="css/home.css?v=4">
+  <link rel="stylesheet" href="css/history.css?v=5">
+  <link rel="stylesheet" href="css/home.css?v=6">
 </head>
 <body class="app intro-on">
   <div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="임규태 판소리">
@@ -51,10 +51,12 @@
     <div class="hx-hero">
       <img src="img/intro-stage.jpg" alt="">
       <div class="hx-hero-veil"></div>
-      <div class="hx-hero-text">
-        <p>History</p>
-        <h2>걸어온 소리</h2>
-        <i></i>
+      <div class="hx-hero-inner">
+        <div class="hx-hero-text">
+          <p>History</p>
+          <h2>걸어온 소리</h2>
+          <i></i>
+        </div>
       </div>
     </div>
     <section class="hx" aria-label="연혁">
@@ -63,9 +65,10 @@
           <span>연혁</span>
           <p class="pl"><b>임규태</b>가
 걸어온 소리</p>
-          <div class="pl">임규태 판소리연희단을 이끌며
-국내와 해외 무대에서
-우리 소리를 전하고 있습니다.</div>
+          <div class="pl">국립창극단을 거쳐
+임규태 판소리연희단을 이끌며
+국립극장부터 링컨센터까지
+우리 소리를 세워 왔습니다.</div>
         </div>
         <div class="cont">
           <div>
@@ -127,7 +130,7 @@
       </div>
     </section>
     <div class="hx-cta">
-      <p>무대 위의 소리를 배너로 담아보세요</p>
+      <p>그가 세운 소리를, 이 무대에서 이어서 보세요</p>
       <button type="button" id="btnToHome">진짜 배너 업로드하기</button>
     </div>
   </section>
@@ -146,7 +149,6 @@
           </nav>
         </div>
         <div class="phome-head-right">
-          <button type="button" class="phome-ticket" data-go-upload>진짜 진짜 업로드하기</button>
           <button type="button" class="phome-burger" id="phomeBurger" aria-label="메뉴">
             <i></i><i></i>
           </button>
@@ -166,9 +168,9 @@
         <img src="img/home/visual-1.jpg" alt="">
         <div class="phome-slide-body">
           <div class="phome-wrap">
-            <p class="phome-slide-kicker">CONCEPT 2025</p>
-            <h2 class="phome-slide-tit">임규태 판소리</h2>
-            <p class="phome-slide-desc">전통 판소리의 깊이를 담아 우리 소리를 전합니다.</p>
+            <p class="phome-slide-kicker">PANSORI</p>
+            <h2 class="phome-slide-tit">임규태</h2>
+            <p class="phome-slide-desc">국립창극단을 거쳐, 세계 무대에 우리 소리를 세운 소리꾼입니다.</p>
             <button type="button" class="phome-slide-btn" data-scroll="#homeIntro">자세히 보기</button>
           </div>
         </div>
@@ -177,9 +179,9 @@
         <img src="img/home/visual-2.jpg" alt="">
         <div class="phome-slide-body">
           <div class="phome-wrap">
-            <p class="phome-slide-kicker">STAGE</p>
-            <h2 class="phome-slide-tit">소리의 무대</h2>
-            <p class="phome-slide-desc">창과 북이 호흡하는 무대에서 춘향가와 심청가를 만나보세요.</p>
+            <p class="phome-slide-kicker">NATIONAL THEATER</p>
+            <h2 class="phome-slide-tit">춘향가</h2>
+            <p class="phome-slide-desc">국립극장 정기공연에서 창과 북이 한 호흡으로 만납니다.</p>
             <button type="button" class="phome-slide-btn" data-scroll="#homeProg">자세히 보기</button>
           </div>
         </div>
@@ -188,38 +190,39 @@
         <img src="img/home/visual-3.jpg" alt="">
         <div class="phome-slide-body">
           <div class="phome-wrap">
-            <p class="phome-slide-kicker">WORLD</p>
-            <h2 class="phome-slide-tit">세계를 향한 소리</h2>
-            <p class="phome-slide-desc">뉴욕, 파리, 도쿄 무대에서 이어온 우리 판소리를 전합니다.</p>
+            <p class="phome-slide-kicker">WORLD STAGE</p>
+            <h2 class="phome-slide-tit">링컨센터</h2>
+            <p class="phome-slide-desc">뉴욕, 파리, 도쿄 — 초청받은 무대에서 판소리를 이어 왔습니다.</p>
             <button type="button" class="phome-slide-btn" data-scroll="#homeNews">자세히 보기</button>
           </div>
         </div>
       </div>
       <div class="phome-pager" id="phomePager">
-        <button type="button" class="is-on">임규태 판소리<span class="phome-pbar"></span></button>
-        <button type="button">소리의 무대<span class="phome-pbar"></span></button>
-        <button type="button">세계를 향한 소리<span class="phome-pbar"></span></button>
+        <button type="button" class="is-on">임규태<span class="phome-pbar"></span></button>
+        <button type="button">춘향가<span class="phome-pbar"></span></button>
+        <button type="button">링컨센터<span class="phome-pbar"></span></button>
       </div>
     </section>
 
     <section class="phome-cards" id="homeIntro">
       <div class="phome-wrap">
-        <h2 class="phome-sec-tit">우리 소리를 잇는 무대</h2>
+        <h2 class="phome-sec-tit">소리를 세운 사람</h2>
+        <p class="phome-sec-lead">국립창극단 출신, 임규태 판소리연희단 대표.<br>링컨센터와 유네스코, 국립극장에서 우리 소리가 선 자리를 지켜 왔습니다.</p>
         <ul class="phome-card-list">
           <li class="phome-card">
             <figure><img src="img/home/ico-1.svg" alt=""></figure>
             <strong>소리</strong>
-            <p>창과 아니리를 잇는<br>판소리의 본령을 전합니다.</p>
+            <p>창과 아니리로<br>판소리의 본령을 세웁니다.</p>
           </li>
           <li class="phome-card">
             <figure><img src="img/home/ico-2.svg" alt=""></figure>
             <strong>고수</strong>
-            <p>북과 호흡이 만드는<br>무대의 리듬을 경험하세요.</p>
+            <p>북 한 점이<br>무대의 숨결을 가릅니다.</p>
           </li>
           <li class="phome-card">
             <figure><img src="img/home/ico-3.svg" alt=""></figure>
             <strong>연희</strong>
-            <p>국내와 해외 무대를 잇는<br>연희단의 소리를 만나보세요.</p>
+            <p>연희단이 국내와 해외를<br>한 무대로 잇습니다.</p>
           </li>
         </ul>
       </div>
@@ -228,8 +231,7 @@
     <section class="phome-banner">
       <img src="img/home/banner.jpg" alt="">
       <div class="phome-wrap phome-banner-inner">
-        <h3>무대에서 만나는 창과 북,<br>우리 소리의 세계를 경험하세요.</h3>
-        <button type="button" class="phome-upload" data-go-upload>진짜 진짜 업로드하기</button>
+        <h3>국립극장에서 링컨센터까지,<br>창과 북이 세계와 마주합니다.</h3>
       </div>
     </section>
 
@@ -265,31 +267,31 @@
       <div class="phome-wrap">
         <div class="phome-news-top">
           <h2 class="phome-sec-tit">공지사항</h2>
-          <button type="button" class="phome-viewmore">VIEW MORE</button>
+          <button type="button" class="phome-viewmore" data-scroll="#homeNews">VIEW MORE</button>
         </div>
         <div class="phome-news-list">
           <a class="phome-news-item" href="#homeNews">
             <figure><img src="img/home/news-1.jpg" alt=""></figure>
-            <h5>2025 정기공연 〈춘향가〉 좌석을 확인하세요</h5>
-            <p>국립극장 무대에서 펼쳐지는 임규태 판소리연희단 정기공연 일정을 안내합니다.</p>
+            <h5>국립극장 정기공연 〈춘향가〉 좌석 안내</h5>
+            <p>임규태 판소리연희단이 국립극장에서 춘향가의 본령을 선보입니다.</p>
             <span>2025.03.12</span>
           </a>
           <a class="phome-news-item" href="#homeNews">
             <figure><img src="img/home/news-2.jpg" alt=""></figure>
-            <h5>전주세계소리축제 개막 무대 후기를 전합니다</h5>
-            <p>국내 대표 소리 축제 개막 무대에 오른 연희단의 공연 소식을 확인하세요.</p>
+            <h5>전주세계소리축제 개막 무대</h5>
+            <p>국내 대표 소리 축제의 첫 무대에 오른 연희단의 공연을 전합니다.</p>
             <span>2024.10.04</span>
           </a>
           <a class="phome-news-item" href="#homeNews">
             <figure><img src="img/home/news-3.jpg" alt=""></figure>
-            <h5>해외 초청 공연 일정을 공유합니다</h5>
-            <p>뉴욕, 파리, 도쿄에서 이어온 우리 소리의 다음 무대를 안내합니다.</p>
+            <h5>링컨센터·유네스코 초청 일정</h5>
+            <p>뉴욕과 파리에서 이어 온 해외 초청 무대의 다음 일정을 안내합니다.</p>
             <span>2024.06.18</span>
           </a>
           <a class="phome-news-item" href="#homeNews">
             <figure><img src="img/home/news-4.jpg" alt=""></figure>
-            <h5>연희단 국악당 순회 공연 일정을 확인하세요</h5>
-            <p>전국 국악당을 찾는 순회 공연으로 판소리를 더 가까이에서 만나보세요.</p>
+            <h5>연희단 국악당 순회</h5>
+            <p>전국 국악당을 돌며 판소리를 더 가까운 자리에서 선보입니다.</p>
             <span>2025.01.22</span>
           </a>
         </div>
@@ -316,18 +318,21 @@
           <div>
             <h2 class="phome-foot-logo">임규태 판소리</h2>
             <address>
-              <p>서울특별시 종로구 돈화문로 국립극장 일대</p>
-              <p>T. 02-1234-5678 &nbsp; E. hello@imkyutae.kr</p>
+              <p>세종특별자치시 한누리대로</p>
+              <p>T. 010-2810-8405</p>
             </address>
             <p class="phome-foot-copy">2025 IM KYU-TAE PANSORI. ALL RIGHTS RESERVED</p>
           </div>
           <div>
             <p class="phome-tel-label">고객센터</p>
-            <a class="phome-tel" href="tel:0212345678">02-1234-5678</a>
+            <a class="phome-tel" href="tel:01028108405">010-2810-8405</a>
           </div>
         </div>
       </div>
     </footer>
+    <div class="phome-final">
+      <button type="button" class="phome-upload" data-go-upload>진짜 진짜 업로드하기</button>
+    </div>
   </section>
 
   <section class="app-upload" id="uploadView" hidden>
@@ -446,6 +451,6 @@
     </div>
   </section>
 
-  <script src="js/app.js?v=18"></script>
+  <script src="js/app.js?v=19"></script>
 </body>
 </html>
