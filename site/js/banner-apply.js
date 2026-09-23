@@ -14,10 +14,12 @@
       var isSub = !!(document.getElementById("sub_main_banner") ||
         (document.getElementById("sh_hd") && document.getElementById("sh_hd").classList.contains("sub")));
       parts.push("#sh_wrapper{--mc-main-banner-bg:" + topUrl + ";--mc-sub-banner-bg:" + topUrl + ";}");
+      parts.push("#sh_wrapper:before,#sub_main_banner{background-image:" + topUrl + " !important;background-repeat:no-repeat;background-position:center center;background-size:cover;}");
       if (!isSub) {
         parts.push("#sh_wrapper{background-image:" + topUrl + ";background-repeat:no-repeat;background-position-x:center;}");
       }
       parts.push("@media (max-width:1024px){#main_banner{background:" + topUrl + " no-repeat center / cover !important}}");
+      parts.push("@media (max-width:480px){#sub_main_banner{background:none !important}}");
     }
     if (banners.system) {
       parts.push("#include02_wrapper{background-image:" + cssUrl(banners.system) + " !important;}");

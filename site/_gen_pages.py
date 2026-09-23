@@ -23,7 +23,7 @@ def page(title, extra_css, body_page, container_class, content, layout="sub"):
 {css}
 </head>
 <body data-page="{body_page}">
-<div id="sh_wrapper" style="--mc-sub-banner-bg:url(/site/img/sub/head_sub_bg.png);">
+<div id="sh_wrapper" style="--mc-sub-banner-bg:url(/site/img/common/head_bg.png);">
     <div id="mc-inject-header"></div>
 {banner}    <div id="sh_container"{container_class}>
 {snb}        <div id="sh_container_wrapper">

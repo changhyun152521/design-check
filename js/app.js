@@ -510,14 +510,20 @@
   function sendBanners() {
     var win = iframe.contentWindow;
     if (!win) return;
+    var defaults = {
+      top: "/site/img/common/head_bg.png",
+      system: "/site/img/main/inc02/in02_bg.png",
+      slide1: "/site/img/main/inc01/banner01.png",
+      slide2: "/site/img/main/inc01/banner03.png"
+    };
     win.postMessage({
       type: "MC_APPLY_BANNERS",
-      banners: useUploaded ? {
-        top: banners.top,
-        system: banners.system,
-        slide1: banners.slide1,
-        slide2: banners.slide2
-      } : { top: "", system: "", slide1: "", slide2: "" }
+      banners: {
+        top: (useUploaded && banners.top) || defaults.top,
+        system: (useUploaded && banners.system) || defaults.system,
+        slide1: (useUploaded && banners.slide1) || defaults.slide1,
+        slide2: (useUploaded && banners.slide2) || defaults.slide2
+      }
     }, "*");
   }
 

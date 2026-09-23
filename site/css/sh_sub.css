@@ -11,7 +11,7 @@
     position:absolute;
     top:0;left:0;right:0;
     height:370px; /* hd_gnb 38 + top_nav 82 + banner 250 */
-    background-image:var(--mc-sub-banner-bg, url(../img/sub/head_sub_bg.png));
+    background-image:var(--mc-sub-banner-bg, url(../img/common/head_bg.png));
     background-repeat:no-repeat;
     background-position:center center;
     background-size:cover;
@@ -27,7 +27,7 @@
 
 /* 반응형 [s] */
 @media (max-width:1024px){
-#sub_main_banner{height:350px;background:var(--mc-sub-banner-bg, url(../img/sub/head_sub_bg.png)) no-repeat center / cover;}
+#sub_main_banner{height:350px;background:var(--mc-sub-banner-bg, url(../img/common/head_bg.png)) no-repeat center / cover;}
 #sh_content_tit_wrap{top:50%;transform: translate(-50%, -50%);margin-top:0px !important;opacity: 1 !important;}
 #sh_content_tit_wrap h3{font-size:32px;}
 #sh_content_tit_wrap span{font-size:15px;}
